@@ -1,0 +1,3 @@
+<?
+define('ASSETS', '../../../admin/public');
+?>
