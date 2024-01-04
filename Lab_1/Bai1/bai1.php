@@ -31,14 +31,17 @@ function find_by_subject($subject)
 }
 // controtter
 $list_of_courses = get_courses();
-$subject = (!empty($_GET['subject']) ? $_GET['subject'] : '');
+$subject = (!empty($_GET['subject'])) ? $_GET['subject'] : '';
 $course_name = find_by_subject($subject);
 $page_content = $course_name;
 ?>
-<!-- view  -->
+<!-- view -->
 <?= $page_content; ?>
-<select name="courses">
+<form action="">
+<select name="$subject">
     <? foreach ($list_of_courses as $course_name) : ?>
         <option><?= $course_name ?></option>
     <? endforeach; ?>
 </setect>
+<button type="submit">Tìm..</button>
+</form>
