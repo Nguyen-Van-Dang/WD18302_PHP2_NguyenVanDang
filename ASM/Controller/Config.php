@@ -1,3 +1,0 @@
-<?
-define('ASSETS', '../../../admin/public');
-?>
