@@ -2,7 +2,7 @@
     "name": "php/oop",
     "autoload": {
         "psr-4": {
-            "Php\\Oop\\": "src/"
+            "Src\\": "src/"
         }
     },
     "authors": [
