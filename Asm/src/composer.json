@@ -1,0 +1,14 @@
+{
+    "name": "php/oop",
+    "autoload": {
+        "psr-4": {
+            "Php\\Oop\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ASMPHP2"
+        }
+    ],
+    "require": {}
+}
