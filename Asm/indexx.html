@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"rel="stylesheet"/>
+  <title>Trường Cao đẳng FPT Polytechnic</title>
+  <style>
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    .overlay1 {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+
+    .homepageButtonGroup {
+      text-align: center;
+    }
+
+    .homepageButton {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .off {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .off:hover {
+      background-color: #45a049;
+    }
+    /*  */
+    button:focus {
+      outline: none;
+    }
+    .app2 {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      min-width: 356px;
+    }
+    .overlay {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      background-color: rgb(0, 0, 0);
+      background-color: white;
+      overflow-x: hidden;
+      transition: 0.5s;
+    }
+
+    .overlay-content {
+      position: relative;
+      top: 0%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      color: black;
+      display: block;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .overlay .hover:hover,
+    .overlay .hover:focus {
+      color: #f1f1f1;
+      background: #ffffff;
+    color: black;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .overlay .closebtn {
+      position: absolute;
+      top: -35px;
+      left: 85%;
+      font-size: 50px;
+    }
+    .overlay-content-ress{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    background-color: #192040;
+    color: white;
+    }
+
+    .overlay .hover1:hover,
+    .overlay .hover1:focus {
+transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    }
+
+    @media screen and (max-height: 450px) {
+      .overlay a {
+        font-size: 20px;
+      }
+      .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        left: 35px;
+      }
+    }
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 100%;
+    }
+
+    #myCarousel {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .img-fluid {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Optional: Add navigation buttons */
+    .carousel-control-prev,
+    .carousel-control-next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    .carousel-control-prev {
+      left: 15px;
+    }
+
+    .carousel-control-next {
+      right: 15px;
+    }
+    @media (max-width: 1023px) {
+      .homepageButtonGroup {
+        margin: 30px 28px;
+        flex-direction: column !important;
+      }
+      .homepageButton {
+        width: 100%;
+      }
+    }
+    .homepageButtonGroup {
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      align-items: center;
+      gap: 30px;
+    }
+    .homepageButton {
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      background-color: #192041;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-family: Quicksand;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      padding: 10px 25px;
+      white-space: nowrap;
+    }
+    .homepageButton:hover {
+      background-color: #ffffff;
+      color: #192041;
+    }
+    .background_image {
+      width: 100%;
+      height: 735px;
+    }
+    .topBar {
+      position: absolute;
+      height: 9rem;
+      width: 100%;
+      z-index: 5;
+    }
+    .separator {
+      height: 2px;
+      background: transparent;
+      background-image: linear-gradient(
+        to right,
+        #e7eaee 40%,
+        rgba(255, 255, 255, 0) 0%
+      );
+      background-position: bottom;
+      background-size: 20px 2px;
+      background-repeat: repeat-x;
+    }
+    .topBarSection {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .topBarGroup {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+    }
+    .hamburgerBtn {
+      background: transparent;
+      border: none;
+      width: -moz-fit-content;
+      width: fit-content;
+    }
+    .navigator {
+      height: 16px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem auto;
+    }
+    .sliderBody {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 40px;
+    }
+    .sliderArrow svg rect,
+    .sliderArrow svg path {
+      transition: all 0.3s ease-in-out;
+    }
+    .sliderArrow:hover svg rect {
+      fill: #ffffff;
+      fill-opacity: 1;
+    }
+    .sliderArrow:hover svg path {
+      stroke: #192041;
+    }
+    .intro {
+      height: auto;
+      width: 100%;
+      background: #192041;
+      display: flex;
+      justify-content: center;
+    }
+    .introContent {
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 41px;
+    }
+    .introContent p {
+      color: #fff;
+      text-align: center;
+      font-family: Manrope;
+      font-size: 24px;
+      word-wrap: break-word;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .footer {
+      padding: 10px 20px 0 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .buttonLogo {
+      height: 24px;
+    }
+    .footer p {
+      color: var(--informing-night-sky, #192041);
+      text-align: right;
+      font-family: DM Sans;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  </style>
+</head>
+<body>
+  <div id="app1">
+    <div class="app2">
+      <div class="topBar">
+        <div class="topBarSection">
+          <img src="logo.png" style="height: 7rem" />
+          <div class="topBarGroup">
+            <div class="homepageButtonGroup">
+              <button class="homepageButton" onclick="openPopup('teacher')">Giảng Viên</button>
+              <button class="homepageButton" onclick="openPopup('student')">Sinh viên</button>
+            </div>
+            <div id="studentPopup" class="popup">
+              <h2>Đăng ký và Đăng nhập - Sinh viên</h2>
+              <!-- Form Đăng nhập -->
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="loginUsername">Tên đăng nhập:</label>
+                  <input type="text" id="loginUsername" name="loginUsername" required>
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Mật khẩu:</label>
+                  <input type="password" id="loginPassword" name="loginPassword" required>
+                </div>
+                <button type="button" onclick="login()" class="off">Đăng nhập</button>
+              </form>
+              <!-- Form Đăng ký -->
+              <form id="registerForm" style="display: none;">
+                <div class="form-group">
+                  <label for="registerUsername">Tên đăng nhập:</label>
+                  <input type="text" id="registerUsername" name="registerUsername" required>
+                </div>
+                <div class="form-group">
+                  <label for="registerPassword">Mật khẩu:</label>
+                  <input type="password" id="registerPassword" name="registerPassword" required>
+                </div>
+                <button type="button" onclick="register()" class="off">Đăng ký</button>
+              </form>
+              <p id="toggleText">Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a></p>
+              <button onclick="closePopup('student')" class="off" 
+              style="margin: 0 auto; display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;">Đóng</button>
+            </div>
+            <div id="overlay1" class="overlay1" onclick="closePopup('student')"></div>
+            <button class="hamburgerBtn">
+              <div id="myNav" class="overlay">
+                <a href="javascript:void(0)"class="closebtn"onclick="closeNav()">&times;</a>
+                <div class="overlay-content-ress">
+                  <a href="#" class="hover1" style="color: white;">Liên hệ</a>
+                </div>
+                <div class="overlay-content">
+                  <a href="#" class="hover">Trường Cao Đẳng FPT Folytechnic</a>
+                  <a href="#" class="hover">Trường Cao Đẳng FPT Folytechnic</a>
+                </div>
+              </div>
+              <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
+            </button>
+          </div>
+        </div>
+        <div class="separator"></div>
+      </div>
+      <!---->
+      <div>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="1.png"
+                class="img-fluid"
+                alt="Slide 1"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="2.png"
+                class="img-fluid"
+                alt="Slide 2"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="3.png"
+                class="img-fluid"
+                alt="Slide 3"
+              />
+            </div>
+          </div>
+          <button class="carousel-control-prev"type="button"data-bs-target="#myCarousel"data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next"type="button"data-bs-target="#myCarousel"data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <!---->
+      <div class="banner">
+        <div class="spake" style="padding: 10px;"></div>
+        <div class="intro">
+          <div class="introContent">
+            <img src="Logo.png" style="height: 5rem; width: auto; max-height: 100%; display: block; padding-bottom: 15px;"/>
+            <p>
+              Trụ sở chính Tòa nhà FPT Polytechnic, Phố Trịnh Văn Bô, Nam Từ Liêm, Hà Nội
+            </p>
+          </div>
+        </div>
+        <div class="footer">
+          <p>FPT Polytechnic © 2023, All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function openPopup(type) {
+    if (type === 'student') {
+      document.getElementById('studentPopup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+  }
+
+  function closePopup(type) {
+    if (type === 'student') {
+      document.getElementById('studentPopup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  }
+
+  function toggleForm() {
+    var loginForm = document.getElementById('loginForm');
+    var registerForm = document.getElementById('registerForm');
+    var toggleText = document.getElementById('toggleText');
+
+    if (loginForm.style.display === 'block') {
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+      toggleText.innerHTML = 'Đã có tài khoản? <a href="#" onclick="toggleForm()">Đăng nhập ngay</a>';
+    } else {
+      loginForm.style.display = 'block';
+      registerForm.style.display = 'none';
+      toggleText.innerHTML = 'Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a>';
+    }
+  }
+
+  function login() {
+    // Thực hiện xử lý đăng nhập
+    alert('Đăng nhập thành công!');
+  }
+
+  function register() {
+    // Thực hiện xử lý đăng ký
+    alert('Đăng ký thành công!');
+  }
+</script>
+<script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "20%";
+    }
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    }
+  </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

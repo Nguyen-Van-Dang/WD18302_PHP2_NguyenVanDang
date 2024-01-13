@@ -1,382 +1,1366 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"rel="stylesheet"/>
-  <title>Trường Cao đẳng FPT Polytechnic</title>
+  <meta charset="utf-8" />
+  <title>Trang chủ | FPT Polytechnic</title>
+  <meta name="description" content="Aside light skin example" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/vendors/custom/fullcalendar/fullcalendar.bundle.css"
+    rel="stylesheet" type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/vendors/global/vendors.bundle.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/css/demo1/style.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/css/demo1/skins/header/base/light.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/css/demo1/skins/header/menu/light.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/css/demo1/skins/brand/light.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/css/demo1/skins/aside/light.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://ap.poly.edu.vn/theme/student_v2/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://ap.poly.edu.vn/css/web.css" rel="stylesheet" />
+  <link href="https://ap.poly.edu.vn/css/popup.css" id="theme" rel="stylesheet" />
+  <meta name="csrf-token" content="JeJsr2NOTu4CSoxlbbhoMbWfuAKnFFx1aeuurWfw" />
   <style>
-    button:focus {
+    .closes{
+      float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    background: none;
+    border: none;
+    margin-left: 98%;
+    }
+    #show-newsletter-student {
+      max-height: 60vh !important;
+      overflow: auto;
+      overflow-x: hidden;
+    }
+
+    #show-newsletter-student::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #f5f5f5;
+    }
+
+    #show-newsletter-student::-webkit-scrollbar {
+      width: 1px;
+      background-color: #f5f5f5;
+    }
+
+    #show-newsletter-student::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #ede6e6;
+    }
+
+    .vld-shown {
+      overflow: hidden;
+    }
+
+    .vld-overlay {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      align-items: center;
+      display: none;
+      justify-content: center;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .vld-overlay.is-active {
+      display: flex;
+    }
+
+    .vld-overlay.is-full-page {
+      z-index: 9999;
+      position: fixed;
+    }
+
+    .vld-overlay .vld-background {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: #fff;
+      opacity: 0.5;
+    }
+
+    .vld-overlay .vld-icon,
+    .vld-parent {
+      position: relative;
+    }
+
+    fieldset[disabled] .multiselect {
+      pointer-events: none;
+    }
+
+    .multiselect__spinner {
+      position: absolute;
+      right: 1px;
+      top: 1px;
+      width: 40px;
+      height: 38px;
+      background: #fff;
+      display: block;
+    }
+
+    .multiselect__spinner:after,
+    .multiselect__spinner:before {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 50%;
+      margin: -8px 0 0 -8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      border: 2px solid transparent;
+      border-top-color: #41b883;
+      box-shadow: 0 0 0 1px transparent;
+    }
+
+    .multiselect__spinner:before {
+      animation: spinning 2.4s cubic-bezier(0.41, 0.26, 0.2, 0.62);
+      animation-iteration-count: infinite;
+    }
+
+    .multiselect__spinner:after {
+      animation: spinning 2.4s cubic-bezier(0.51, 0.09, 0.21, 0.8);
+      animation-iteration-count: infinite;
+    }
+
+    .multiselect__loading-enter-active,
+    .multiselect__loading-leave-active {
+      transition: opacity 0.4s ease-in-out;
+      opacity: 1;
+    }
+
+    .multiselect__loading-enter,
+    .multiselect__loading-leave-active {
+      opacity: 0;
+    }
+
+    .multiselect,
+    .multiselect__input,
+    .multiselect__single {
+      font-family: inherit;
+      font-size: 16px;
+      touch-action: manipulation;
+    }
+
+    .multiselect {
+      box-sizing: content-box;
+      display: block;
+      position: relative;
+      width: 100%;
+      min-height: 40px;
+      text-align: left;
+      color: #35495e;
+    }
+
+    .multiselect * {
+      box-sizing: border-box;
+    }
+
+    .multiselect:focus {
       outline: none;
     }
-    .app2 {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      min-width: 356px;
-    }
-    .overlay {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      right: 0;
-      background-color: rgb(0, 0, 0);
-      background-color: white;
-      overflow-x: hidden;
-      transition: 0.5s;
+
+    .multiselect--disabled {
+      background: #ededed;
+      pointer-events: none;
+      opacity: 0.6;
     }
 
-    .overlay-content {
+    .multiselect--active {
+      z-index: 50;
+    }
+
+    .multiselect--active:not(.multiselect--above) .multiselect__current,
+    .multiselect--active:not(.multiselect--above) .multiselect__input,
+    .multiselect--active:not(.multiselect--above) .multiselect__tags {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .multiselect--active .multiselect__select {
+      transform: rotate(180deg);
+    }
+
+    .multiselect--above.multiselect--active .multiselect__current,
+    .multiselect--above.multiselect--active .multiselect__input,
+    .multiselect--above.multiselect--active .multiselect__tags {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .multiselect__input,
+    .multiselect__single {
       position: relative;
-      top: 0%;
+      display: inline-block;
+      min-height: 20px;
+      line-height: 20px;
+      border: none;
+      border-radius: 5px;
+      background: #fff;
+      padding: 0 0 0 5px;
       width: 100%;
-      text-align: center;
-      margin-top: 30px;
+      transition: border 0.1s ease;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+      vertical-align: top;
     }
 
-    .overlay a {
-      padding: 8px;
-      text-decoration: none;
-      font-size: 15px;
-      color: black;
+    .multiselect__input::-moz-placeholder {
+      color: #35495e;
+    }
+
+    .multiselect__input::placeholder {
+      color: #35495e;
+    }
+
+    .multiselect__tag~.multiselect__input,
+    .multiselect__tag~.multiselect__single {
+      width: auto;
+    }
+
+    .multiselect__input:hover,
+    .multiselect__single:hover {
+      border-color: #cfcfcf;
+    }
+
+    .multiselect__input:focus,
+    .multiselect__single:focus {
+      border-color: #a8a8a8;
+      outline: none;
+    }
+
+    .multiselect__single {
+      padding-left: 5px;
+      margin-bottom: 8px;
+    }
+
+    .multiselect__tags-wrap {
+      display: inline;
+    }
+
+    .multiselect__tags {
+      min-height: 40px;
       display: block;
-      transition: 0.3s;
-      font-weight: 600;
+      padding: 8px 40px 0 8px;
+      border-radius: 5px;
+      border: 1px solid #e8e8e8;
+      background: #fff;
+      font-size: 14px;
     }
 
-    .overlay .hover:hover,
-    .overlay .hover:focus {
-      color: #f1f1f1;
-      background: #ffffff;
-    color: black;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .overlay .closebtn {
-      position: absolute;
-      top: -35px;
-      left: 85%;
-      font-size: 50px;
-    }
-    .overlay-content-ress{
-    position: relative;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-    background-color: #192040;
-    color: white;
-    }
-
-    .overlay .hover1:hover,
-    .overlay .hover1:focus {
-transition: all 0.3s ease-in-out;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
-    }
-
-    @media screen and (max-height: 450px) {
-      .overlay a {
-        font-size: 20px;
-      }
-      .overlay .closebtn {
-        font-size: 40px;
-        top: 15px;
-        left: 35px;
-      }
-    }
-    .carousel-container {
-      overflow: hidden;
+    .multiselect__tag {
       position: relative;
-    }
-
-    .carousel-inner {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-item {
-      width: 100%;
-    }
-
-    #myCarousel {
-      width: 100%;
+      display: inline-block;
+      padding: 4px 26px 4px 10px;
+      border-radius: 5px;
+      margin-right: 10px;
+      color: #fff;
+      line-height: 1;
+      background: #41b883;
+      margin-bottom: 5px;
+      white-space: nowrap;
       overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
     }
 
-    .img-fluid {
-      width: 100%;
-      height: auto;
-    }
-
-    /* Optional: Add navigation buttons */
-    .carousel-control-prev,
-    .carousel-control-next {
+    .multiselect__tag-icon {
       cursor: pointer;
+      margin-left: 7px;
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      font-weight: 700;
+      font-style: normal;
+      width: 22px;
+      text-align: center;
+      line-height: 22px;
+      transition: all 0.2s ease;
+      border-radius: 5px;
+    }
+
+    .multiselect__tag-icon:after {
+      content: "\D7";
+      color: #266d4d;
+      font-size: 14px;
+    }
+
+    .multiselect__tag-icon:focus,
+    .multiselect__tag-icon:hover {
+      background: #369a6e;
+    }
+
+    .multiselect__tag-icon:focus:after,
+    .multiselect__tag-icon:hover:after {
       color: #fff;
     }
 
-    .carousel-control-prev {
-      left: 15px;
+    .multiselect__current {
+      min-height: 40px;
+      overflow: hidden;
+      padding: 8px 30px 0 12px;
+      white-space: nowrap;
+      border-radius: 5px;
+      border: 1px solid #e8e8e8;
     }
 
-    .carousel-control-next {
-      right: 15px;
+    .multiselect__current,
+    .multiselect__select {
+      line-height: 16px;
+      box-sizing: border-box;
+      display: block;
+      margin: 0;
+      text-decoration: none;
+      cursor: pointer;
     }
-    @media (max-width: 1023px) {
-      .homepageButtonGroup {
-        margin: 30px 28px;
-        flex-direction: column !important;
-      }
-      .homepageButton {
-        width: 100%;
-      }
+
+    .multiselect__select {
+      position: absolute;
+      width: 40px;
+      height: 38px;
+      right: 1px;
+      top: 1px;
+      padding: 4px 8px;
+      text-align: center;
+      transition: transform 0.2s ease;
     }
-    .homepageButtonGroup {
-      display: flex;
-      flex-direction: row;
-      justify-items: center;
-      align-items: center;
-      gap: 30px;
+
+    .multiselect__select:before {
+      position: relative;
+      right: 0;
+      top: 65%;
+      color: #999;
+      margin-top: 4px;
+      border-color: #999 transparent transparent;
+      border-style: solid;
+      border-width: 5px 5px 0;
+      content: "";
     }
-    .homepageButton {
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      background-color: #192041;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      font-family: Quicksand;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      padding: 10px 25px;
+
+    .multiselect__placeholder {
+      color: #adadad;
+      display: inline-block;
+      margin-bottom: 10px;
+      padding-top: 2px;
+    }
+
+    .multiselect--active .multiselect__placeholder {
+      display: none;
+    }
+
+    .multiselect__content-wrapper {
+      position: absolute;
+      display: block;
+      background: #fff;
+      width: 100%;
+      max-height: 240px;
+      overflow: auto;
+      border: 1px solid #e8e8e8;
+      border-top: none;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      z-index: 50;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .multiselect__content {
+      list-style: none;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      min-width: 100%;
+      vertical-align: top;
+    }
+
+    .multiselect--above .multiselect__content-wrapper {
+      bottom: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: none;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .multiselect__content::webkit-scrollbar {
+      display: none;
+    }
+
+    .multiselect__element {
+      display: block;
+    }
+
+    .multiselect__option {
+      display: block;
+      padding: 12px;
+      min-height: 40px;
+      line-height: 16px;
+      text-decoration: none;
+      text-transform: none;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
       white-space: nowrap;
     }
-    .homepageButton:hover {
-      background-color: #ffffff;
-      color: #192041;
-    }
-    .background_image {
-      width: 100%;
-      height: 735px;
-    }
-    .topBar {
+
+    .multiselect__option:after {
+      top: 0;
+      right: 0;
       position: absolute;
-      height: 9rem;
+      line-height: 40px;
+      padding-right: 12px;
+      padding-left: 20px;
+      font-size: 13px;
+    }
+
+    .multiselect__option--highlight {
+      background: #41b883;
+      outline: none;
+      color: #fff;
+    }
+
+    .multiselect__option--highlight:after {
+      content: attr(data-select);
+      background: #41b883;
+      color: #fff;
+    }
+
+    .multiselect__option--selected {
+      background: #f3f3f3;
+      color: #35495e;
+      font-weight: 700;
+    }
+
+    .multiselect__option--selected:after {
+      content: attr(data-selected);
+      color: silver;
+      background: inherit;
+    }
+
+    .multiselect__option--selected.multiselect__option--highlight {
+      background: #ff6a6a;
+      color: #fff;
+    }
+
+    .multiselect__option--selected.multiselect__option--highlight:after {
+      background: #ff6a6a;
+      content: attr(data-deselect);
+      color: #fff;
+    }
+
+    .multiselect--disabled .multiselect__current,
+    .multiselect--disabled .multiselect__select {
+      background: #ededed;
+      color: #a6a6a6;
+    }
+
+    .multiselect__option--disabled {
+      background: #ededed !important;
+      color: #a6a6a6 !important;
+      cursor: text;
+      pointer-events: none;
+    }
+
+    .multiselect__option--group {
+      background: #ededed;
+      color: #35495e;
+    }
+
+    .multiselect__option--group.multiselect__option--highlight {
+      background: #35495e;
+      color: #fff;
+    }
+
+    .multiselect__option--group.multiselect__option--highlight:after {
+      background: #35495e;
+    }
+
+    .multiselect__option--disabled.multiselect__option--highlight {
+      background: #dedede;
+    }
+
+    .multiselect__option--group-selected.multiselect__option--highlight {
+      background: #ff6a6a;
+      color: #fff;
+    }
+
+    .multiselect__option--group-selected.multiselect__option--highlight:after {
+      background: #ff6a6a;
+      content: attr(data-deselect);
+      color: #fff;
+    }
+
+    .multiselect-enter-active,
+    .multiselect-leave-active {
+      transition: all 0.15s ease;
+    }
+
+    .multiselect-enter,
+    .multiselect-leave-active {
+      opacity: 0;
+    }
+
+    .multiselect__strong {
+      margin-bottom: 8px;
+      line-height: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    [dir="rtl"] .multiselect {
+      text-align: right;
+    }
+
+    [dir="rtl"] .multiselect__select {
+      right: auto;
+      left: 1px;
+    }
+
+    [dir="rtl"] .multiselect__tags {
+      padding: 8px 8px 0 40px;
+    }
+
+    [dir="rtl"] .multiselect__content {
+      text-align: right;
+    }
+
+    [dir="rtl"] .multiselect__option:after {
+      right: auto;
+      left: 0;
+    }
+
+    [dir="rtl"] .multiselect__clear {
+      right: auto;
+      left: 12px;
+    }
+
+    [dir="rtl"] .multiselect__spinner {
+      right: auto;
+      left: 1px;
+    }
+
+    @keyframes spinning {
+      0% {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(2turn);
+      }
+    }
+
+    text[data-v-7c44bcf1] {
+      font-family: "Bowlby One SC", cursive;
+    }
+
+    svg[data-v-7c44bcf1] {
       width: 100%;
-      z-index: 5;
     }
-    .separator {
-      height: 2px;
-      background: transparent;
-      background-image: linear-gradient(
-        to right,
-        #e7eaee 40%,
-        rgba(255, 255, 255, 0) 0%
-      );
-      background-position: bottom;
-      background-size: 20px 2px;
-      background-repeat: repeat-x;
+
+    .mt-2[data-v-b3c3b2b6] {
+      margin-top: 1rem;
     }
-    .topBarSection {
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
+
+    .Dkhl__cost[data-v-b3c3b2b6] {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .Dkhl__title--historyTable[data-v-b3c3b2b6] {
+      padding: 25px 0;
+      border-bottom: 1px solid #ebedf2;
+    }
+
+    .Dkhl__historyTable--heading[data-v-b3c3b2b6] {
+      margin: 0;
+      padding: 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .Dkhl__badge[data-v-b3c3b2b6] {
+      padding: 5px;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    .button-63[data-v-b3c3b2b6] {
       align-items: center;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    .topBarGroup {
+      background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+      border: 0;
+      border-radius: 8px;
+      box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+      box-sizing: border-box;
+      color: #ffffff;
       display: flex;
-      flex-direction: row;
-      gap: 30px;
-    }
-    .hamburgerBtn {
-      background: transparent;
-      border: none;
-      width: -moz-fit-content;
-      width: fit-content;
-    }
-    .navigator {
-      height: 16px;
+      font-family: Phantomsans, sans-serif;
+      font-size: 20px;
+      justify-content: center;
+      line-height: 1em;
       width: 100%;
+      min-width: 140px;
+      padding: 19px 24px;
+      text-decoration: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .button-63[data-v-b3c3b2b6]:active,
+    .button-63[data-v-b3c3b2b6]:hover {
+      outline: 0;
+    }
+
+    #vs1__combobox .vs__dropdown-toggle[data-v-cad8efd0] {
+      height: 39px !important;
+    }
+
+    .form_wrapper {
+      position: relative;
+      border: 1px solid #c9cdd2;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+    }
+
+    .link-direct {
+      line-height: 31.25px;
+    }
+
+    .row-item {
+      height: 50px;
+    }
+
+    .icon-minus {
+      position: absolute;
+      cursor: pointer;
+      font-size: 15px;
+      right: 10px;
+      top: 10px;
+    }
+
+    .custom-control-inline {
+      width: 30%;
+    }
+
+    .modal-mask[data-v-0b4b2268] {
+      position: fixed;
+      z-index: 9998;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: table;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-wrapper[data-v-0b4b2268] {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .modal-container[data-v-0b4b2268] {
+      width: 300px;
+      margin: 0px auto;
+      padding: 20px 30px;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+      transition: all 0.3s ease;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .modal-header h3[data-v-0b4b2268] {
+      margin-top: 0;
+      color: #42b983;
+    }
+
+    .modal-body[data-v-0b4b2268] {
+      margin: 20px 0;
+    }
+
+    .modal-default-button[data-v-0b4b2268] {
+      float: right;
+    }
+
+    .modal-enter[data-v-0b4b2268] {
+      opacity: 0;
+    }
+
+    .modal-leave-active[data-v-0b4b2268] {
+      opacity: 0;
+    }
+
+    .modal-enter .modal-container[data-v-0b4b2268],
+    .modal-leave-active .modal-container[data-v-0b4b2268] {
+      transform: scale(1.1);
+    }
+
+    #tabRegister[data-v-0b4b2268] {
+      margin-top: 15px;
+    }
+    .star {
+      width: 180px;
+      position: relative;
       display: flex;
-      flex-direction: row;
+    }
+
+    .star .edit:hover {
+      text-decoration: underline;
+    }
+
+    .star .star-widget input {
+      display: none;
+    }
+
+    .star-widget label {
+      font-size: 15px;
+      color: white;
+      padding: 2px;
+      float: right;
+      transition: all 0.2s ease;
+    }
+
+    .star1 {
+      position: relative;
+      padding: 20px 30px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .star1 .edit:hover {
+      text-decoration: underline;
+    }
+
+    .star1 .star-widget1 input {
+      display: none;
+    }
+
+    .star-widget1 label {
+      font-size: 15px;
+      color: white;
+      padding: 10px;
+      float: right;
+      transition: all 0.2s ease;
+    }
+
+    form header {
+      width: 100%;
+      font-size: 25px;
+      color: #fe7;
+      font-weight: 500;
+      margin: 5px 0 20px 0;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    form #btn_rating {
+      height: 45px;
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    form #btn_rating button {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      font-size: 17px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    form #btn_rating button:hover {
+      background: #1b1b1b;
+    }
+
+    .star-widget label {
+      font-size: 20px;
+      color: #444;
+      padding: 10px;
+      float: right;
+      transition: all 0.2s ease;
+    }
+
+    .title_unsatified p {
+      display: flex;
       justify-content: center;
       align-items: center;
-      margin: 1rem auto;
     }
-    .sliderBody {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      padding: 0 40px;
+
+    #rating-lg-no-border {
+      font-size: 20px;
     }
-    .sliderArrow svg rect,
-    .sliderArrow svg path {
-      transition: all 0.3s ease-in-out;
+
+    #rating-md-no-border {
+      background-color: unset !important;
+      color: #ff9933 !important;
     }
-    .sliderArrow:hover svg rect {
-      fill: #ffffff;
-      fill-opacity: 1;
+
+    .status-subject div table tr th {
+      text-align: center !important;
+      vertical-align: middle !important;
     }
-    .sliderArrow:hover svg path {
-      stroke: #192041;
+
+    .status-subject div table tr td {
+      text-align: center !important;
+      vertical-align: middle !important;
     }
-    .intro {
-      height: auto;
-      width: 100%;
-      background: #192041;
-      display: flex;
-      justify-content: center;
-    }
-    .introContent {
-      padding: 10px 0;
+
+    .flex-column {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 41px;
     }
-    .introContent p {
-      color: #fff;
-      text-align: center;
-      font-family: Manrope;
-      font-size: 24px;
-      word-wrap: break-word;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
+
+    input {
+      margin-bottom: 30px;
     }
-    .footer {
-      padding: 10px 20px 0 0;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+
+    #national-flag[data-v-d570463c] {
+      background-color: #ffffff !important;
+      border: 1px solid #ccc;
     }
-    .buttonLogo {
-      height: 24px;
+
+    .country-phone-code[data-v-d570463c] {
+      color: #000000 !important;
+      font-weight: bold;
     }
-    .footer p {
-      color: var(--informing-night-sky, #192041);
-      text-align: right;
-      font-family: DM Sans;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
+
+    #btn-send-otp[data-v-d570463c] {
+      font-weight: bold;
+      min-width: 75px;
+      min-height: 40px;
+      background-color: #9254c8;
+      border: transparent;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    #btn-confirm-otp[data-v-d570463c] {
+      width: 50px;
+      border: none;
+      background-color: #0e185f;
+    }
+
+    .confirm-overlay[data-v-d570463c] {
+      padding-top: 30px;
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      opacity: 1;
+      font-weight: bold;
+      max-width: 300px;
+      max-height: 300px;
+      min-width: 250px;
+      min-height: 100px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
   </style>
 </head>
-<body>
-  <div id="app1">
-    <div class="app2">
-      <div class="topBar">
-        <div class="topBarSection">
-          <img src="logo.png" style="height: 7rem" />
-          <div class="topBarGroup">
-            <div>
-              <div class="homepageButtonGroup">
-                <button class="homepageButton"><span> Giảng Viên </span></button>
-                <button class="homepageButton"><span> Sinh viên </span></button>
+<body
+  class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed">
+  <div id="app">
+    <div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed">
+      <div class="kt-header-mobile__logo">
+        <a href=""><img alt="Logo" src="logo.png" width="135" /></a>
+      </div>
+      <div class="kt-header-mobile__toolbar">
+        <button id="kt_aside_mobile_toggler" class="kt-header-mobile__toggler kt-header-mobile__toggler--left">
+          <span></span>
+        </button>
+        <button id="kt_header_mobile_topbar_toggler" class="kt-header-mobile__topbar-toggler">
+          <i class="flaticon-more"></i>
+        </button>
+      </div>
+    </div>
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+      <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        <div id="kt_aside" class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop"
+          style="opacity: 1">
+          <div id="kt_aside_brand" class="kt-aside__brand kt-grid__item" kt-hidden-height="65">
+            <div class="kt-aside__brand-logo">
+              <a href=""><img alt="Logo" src="logo.png" width="135" /></a>
+            </div>
+            <div class="kt-aside__brand-tools">
+              <button id="kt_aside_toggler" class="kt-aside__brand-aside-toggler">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
+                    version="1.1" class="kt-svg-icon">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                      <path
+                        d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z"
+                        fill="#000000" fill-rule="nonzero"
+                        transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999) ">
+                      </path>
+                      <path
+                        d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z"
+                        fill="#000000" fill-rule="nonzero" opacity="0.3"
+                        transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999) ">
+                      </path>
+                    </g>
+                  </svg></span>
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
+                    version="1.1" class="kt-svg-icon">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                      <path
+                        d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z"
+                        fill="#000000" fill-rule="nonzero"></path>
+                      <path
+                        d="M3.70710678,15.7071068 C3.31658249,16.0976311 2.68341751,16.0976311 2.29289322,15.7071068 C1.90236893,15.3165825 1.90236893,14.6834175 2.29289322,14.2928932 L8.29289322,8.29289322 C8.67147216,7.91431428 9.28105859,7.90106866 9.67572463,8.26284586 L15.6757246,13.7628459 C16.0828436,14.1360383 16.1103465,14.7686056 15.7371541,15.1757246 C15.3639617,15.5828436 14.7313944,15.6103465 14.3242754,15.2371541 L9.03007575,10.3841378 L3.70710678,15.7071068 Z"
+                        fill="#000000" fill-rule="nonzero" opacity="0.3"
+                        transform="translate(9.000003, 11.999999) rotate(-270.000000) translate(-9.000003, -11.999999) ">
+                      </path>
+                    </g>
+                  </svg></span>
+              </button>
+            </div>
+          </div>
+          <div id="kt_aside_menu_wrapper" class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid">
+            <div id="kt_aside_menu" data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500"
+              class="kt-aside-menu kt-scroll ps ps--active-y" style="height: 344px; overflow: hidden">
+              <ul class="kt-menu__nav">
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="" class="kt-menu__link"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <path
+                            d="M17,12 L18.5,12 C19.3284271,12 20,12.6715729 20,13.5 C20,14.3284271 19.3284271,15 18.5,15 L5.5,15 C4.67157288,15 4,14.3284271 4,13.5 C4,12.6715729 4.67157288,12 5.5,12 L7,12 L7.5582739,6.97553494 C7.80974924,4.71225688 9.72279394,3 12,3 C14.2772061,3 16.1902508,4.71225688 16.4417261,6.97553494 L17,12 Z"
+                            fill="#000000"></path>
+                          <rect fill="#000000" opacity="0.3" x="10" y="16" width="4" height="4" rx="2"></rect>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Thông báo và tin tức</span></a>
+                </li>
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="" class="kt-menu__link"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                          <path
+                            d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
+                            fill="#000000" fill-rule="nonzero"
+                            transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) ">
+                          </path>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Điểm danh</span></a>
+                </li>
+                <li aria-haspopup="true" data-ktmenu-submenu-toggle="hover"
+                  class="kt-menu__item kt-menu__item--submenu">
+                  <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <path
+                            d="M10.5,5 L19.5,5 C20.3284271,5 21,5.67157288 21,6.5 C21,7.32842712 20.3284271,8 19.5,8 L10.5,8 C9.67157288,8 9,7.32842712 9,6.5 C9,5.67157288 9.67157288,5 10.5,5 Z M10.5,10 L19.5,10 C20.3284271,10 21,10.6715729 21,11.5 C21,12.3284271 20.3284271,13 19.5,13 L10.5,13 C9.67157288,13 9,12.3284271 9,11.5 C9,10.6715729 9.67157288,10 10.5,10 Z M10.5,15 L19.5,15 C20.3284271,15 21,15.6715729 21,16.5 C21,17.3284271 20.3284271,18 19.5,18 L10.5,18 C9.67157288,18 9,17.3284271 9,16.5 C9,15.6715729 9.67157288,15 10.5,15 Z"
+                            fill="#000000"></path>
+                          <path
+                            d="M5.5,8 C4.67157288,8 4,7.32842712 4,6.5 C4,5.67157288 4.67157288,5 5.5,5 C6.32842712,5 7,5.67157288 7,6.5 C7,7.32842712 6.32842712,8 5.5,8 Z M5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 C6.32842712,10 7,10.6715729 7,11.5 C7,12.3284271 6.32842712,13 5.5,13 Z M5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 C6.32842712,15 7,15.6715729 7,16.5 C7,17.3284271 6.32842712,18 5.5,18 Z"
+                            fill="#000000" opacity="0.3"></path>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Lịch học</span>
+                    <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="kt-menu__submenu">
+                    <span class="kt-menu__arrow"></span>
+                    <ul class="kt-menu__subnav">
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Thay đổi lịch học</span></a>
+                      </li>
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Lịch học</span></a>
+                      </li>
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Lịch thi</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li aria-haspopup="true" data-ktmenu-submenu-toggle="hover"
+                  class="kt-menu__item kt-menu__item--submenu">
+                  <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <path
+                            d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z"
+                            fill="#000000"></path>
+                          <path
+                            d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z"
+                            fill="#000000" opacity="0.3"></path>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Điểm</span>
+                    <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="kt-menu__submenu">
+                    <span class="kt-menu__arrow"></span>
+                    <ul class="kt-menu__subnav">
+                      <li aria-haspopup="true" class="kt-menu__item kt-menu__item--parent">
+                        <span class="kt-menu__link"><span class="kt-menu__link-text">Điểm</span></span>
+                      </li>
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Bảng điểm theo kỳ</span></a>
+                      </li>
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Lịch sử học</span></a>
+                      </li>
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Bảng điểm</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="#" class="kt-menu__link"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                          <path
+                            d="M16.5,4.5 C14.8905,4.5 13.00825,6.32463215 12,7.5 C10.99175,6.32463215 9.1095,4.5 7.5,4.5 C4.651,4.5 3,6.72217984 3,9.55040872 C3,12.6834696 6,16 12,19.5 C18,16 21,12.75 21,9.75 C21,6.92177112 19.349,4.5 16.5,4.5 Z"
+                            fill="#000000" fill-rule="nonzero"></path>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Khen thưởng/Kỷ luật</span></a>
+                </li>
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="#" class="kt-menu__link"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <circle fill="#000000" opacity="0.3" cx="20.5" cy="12.5" r="1.5"></circle>
+                          <rect fill="#000000" opacity="0.3"
+                            transform="translate(12.000000, 6.500000) rotate(-15.000000) translate(-12.000000, -6.500000) "
+                            x="3" y="3" width="18" height="7" rx="1"></rect>
+                          <path
+                            d="M22,9.33681558 C21.5453723,9.12084552 21.0367986,9 20.5,9 C18.5670034,9 17,10.5670034 17,12.5 C17,14.4329966 18.5670034,16 20.5,16 C21.0367986,16 21.5453723,15.8791545 22,15.6631844 L22,18 C22,19.1045695 21.1045695,20 20,20 L4,20 C2.8954305,20 2,19.1045695 2,18 L2,6 C2,4.8954305 2.8954305,4 4,4 L20,4 C21.1045695,4 22,4.8954305 22,6 L22,9.33681558 Z"
+                            fill="#000000"></path>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Học phí</span></a>
+                </li>
+                <li aria-haspopup="true" data-ktmenu-submenu-toggle="hover"
+                  class="kt-menu__item kt-menu__item--submenu">
+                  <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="9"></circle>
+                          <path
+                            d="M11.7357634,20.9961946 C6.88740052,20.8563914 3,16.8821712 3,12 C3,11.9168367 3.00112797,11.8339369 3.00336944,11.751315 C3.66233009,11.8143341 4.85636818,11.9573854 4.91262842,12.4204038 C4.9904938,13.0609191 4.91262842,13.8615942 5.45804656,14.101772 C6.00346469,14.3419498 6.15931561,13.1409372 6.6267482,13.4612567 C7.09418079,13.7815761 8.34086797,14.0899175 8.34086797,14.6562185 C8.34086797,15.222396 8.10715168,16.1034596 8.34086797,16.2636193 C8.57458427,16.423779 9.5089688,17.54465 9.50920913,17.7048097 C9.50956962,17.8649694 9.83857487,18.6793513 9.74040201,18.9906563 C9.65905192,19.2487394 9.24857641,20.0501554 8.85059781,20.4145589 C9.75315358,20.7620621 10.7235846,20.9657742 11.7357634,20.9960544 L11.7357634,20.9961946 Z M8.28272988,3.80112099 C9.4158415,3.28656421 10.6744554,3 12,3 C15.5114513,3 18.5532143,5.01097452 20.0364482,7.94408274 C20.069657,8.72412177 20.0638332,9.39135321 20.2361262,9.6327358 C21.1131932,10.8600506 18.0995147,11.7043158 18.5573343,13.5605384 C18.7589671,14.3794892 16.5527814,14.1196773 16.0139722,14.886394 C15.4748026,15.6527403 14.1574598,15.137809 13.8520064,14.9904917 C13.546553,14.8431744 12.3766497,15.3341497 12.4789081,14.4995164 C12.5805657,13.664636 13.2922889,13.6156126 14.0555619,13.2719546 C14.8184743,12.928667 15.9189236,11.7871741 15.3781918,11.6380045 C12.8323064,10.9362407 11.963771,8.47852395 11.963771,8.47852395 C11.8110443,8.44901109 11.8493762,6.74109366 11.1883616,6.69207022 C10.5267462,6.64279981 10.170464,6.88841096 9.20435656,6.69207022 C8.23764828,6.49572949 8.44144409,5.85743687 8.2887174,4.48255778 C8.25453994,4.17415686 8.25619136,3.95717082 8.28272988,3.80112099 Z M20.9991771,11.8770357 C20.9997251,11.9179585 21,11.9589471 21,12 C21,16.9406923 17.0188468,20.9515364 12.0895088,20.9995641 C16.970233,20.9503326 20.9337111,16.888438 20.9991771,11.8770357 Z"
+                            fill="#000000" opacity="0.3"></path>
+                        </g>
+                      </svg></span><span class="kt-menu__link-text">Dịch vụ trực tuyến (New)</span>
+                    <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="kt-menu__submenu">
+                    <span class="kt-menu__arrow"></span>
+                    <ul class="kt-menu__subnav">
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Đăng ký dịch vụ</span></a>
+                      </li>
+                      <li aria-haspopup="true" class="kt-menu__item">
+                        <a href="#" class="kt-menu__link"><i
+                            class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
+                          <span class="kt-menu__link-text">Dịch vụ đã đăng ký</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="#" class="kt-menu__link"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                        height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"></rect>
+                          <path
+                            d="M11.914857,14.1427403 L14.1188827,11.9387145 C14.7276032,11.329994 14.8785122,10.4000511 14.4935235,9.63007378 L14.3686433,9.38031323 C13.9836546,8.61033591 14.1345636,7.680393 14.7432841,7.07167248 L17.4760882,4.33886839 C17.6713503,4.14360624 17.9879328,4.14360624 18.183195,4.33886839 C18.2211956,4.37686904 18.2528214,4.42074752 18.2768552,4.46881498 L19.3808309,6.67676638 C20.2253855,8.3658756 19.8943345,10.4059034 18.5589765,11.7412615 L12.560151,17.740087 C11.1066115,19.1936265 8.95659008,19.7011777 7.00646221,19.0511351 L4.5919826,18.2463085 C4.33001094,18.1589846 4.18843095,17.8758246 4.27575484,17.613853 C4.30030124,17.5402138 4.34165566,17.4733009 4.39654309,17.4184135 L7.04781491,14.7671417 C7.65653544,14.1584211 8.58647835,14.0075122 9.35645567,14.3925008 L9.60621621,14.5173811 C10.3761935,14.9023698 11.3061364,14.7514608 11.914857,14.1427403 Z"
+                            fill="#000000"></path>
+                        </g>
+                      </svg></span>
+                    <span class="kt-menu__link-text">SMS</span></a>
+                </li>
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="/register/dang-ky-bao-hiem-y-te" class="kt-menu__link"><span class="kt-menu__link-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="currentColor"
+                        viewBox="0 0 16 16" id="IconChangeColor" class="bi bi-file-earmark-medical">
+                        <path
+                          d="M7.5 5.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L6 7l-.549.317a.5.5 0 1 0 .5.866l.549-.317V8.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L8 7l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V5.5zm-2 4.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"
+                          id="mainIconPathAttribute"></path>
+                        <path
+                          d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                          id="mainIconPathAttribute"></path>
+                      </svg></span>
+                    <span class="kt-menu__link-text">Đăng ký bảo hiểm y tế</span></a>
+                </li>
+                <li aria-haspopup="true" class="kt-menu__item">
+                  <a href="#" class="kt-menu__link"><span class="kt-menu__link-icon"><img
+                        src="https://img.icons8.com/office/16/000000/help.png" /></span>
+                    <span class="kt-menu__link-text">Hỗ trợ</span></a>
+                </li>
+              </ul>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; height: 344px; right: 3px">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 251px"></div>
               </div>
             </div>
-            <button class="hamburgerBtn">
-              <div id="myNav" class="overlay">
-                <a href="javascript:void(0)"class="closebtn"onclick="closeNav()">&times;</a>
-                <div class="overlay-content-ress">
-                  <a href="#" class="hover1" style="color: white;">Liên hệ</a>
+          </div>
+        </div>
+        <div id="kt_wrapper" class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper">
+          <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed">
+            <div id="kt_header_menu_wrapper" class="kt-header-menu-wrapper" style="opacity: 1"></div>
+            <div class="kt-header__topbar">
+              <a href="#" title="Đổi màu"
+                class="kt-header__topbar-item kt-header__topbar-item--langs">
+                <div class="kt-header__topbar-wrapper">
+                  <span class="kt-header__topbar-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24"
+                      version="1.1" class="kt-svg-icon">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"></rect>
+                        <path
+                          d="M12,20 C7.581722,20 4,16.418278 4,12 C4,7.581722 7.581722,4 12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 Z M12,5.99999664 C8.6862915,6 6,8.6862915 6,12 C6,15.3137085 8.6862915,18 12,18.0000034 L12,5.99999664 Z"
+                          fill="#000000" fill-rule="nonzero"></path>
+                      </g>
+                    </svg></span>
                 </div>
-                <div class="overlay-content">
-                  <a href="#" class="hover">Trường Cao Đẳng FPT Folytechnic</a>
-                  <a href="#" class="hover">Trường Cao Đẳng FPT Folytechnic</a>
+              </a>
+              <div class="kt-header__topbar-item kt-header__topbar-item--user">
+                <div data-toggle="dropdown" data-offset="0px,0px" class="kt-header__topbar-wrapper">
+                  <div class="kt-header__topbar-user">
+                    <span class="kt-header__topbar-welcome kt-hidden-mobile">Xin chào,</span>
+                    <span class="kt-header__topbar-username kt-hidden-mobile">Đặng</span>
+                  </div>
+                </div>
+                <div
+                  class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+                  <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="
+                        background-image: url('https://ap.poly.edu.vn/theme/student_v2/media/misc/bg-1.jpg');
+                      ">
+                    <div class="kt-user-card__avatar"></div>
+                    <div class="kt-user-card__name">Nguyễn Văn Đặng</div>
+                  </div>
+                  <div class="kt-notification">
+                    <a href="#" class="kt-notification__item">
+                      <div class="kt-notification__item-icon">
+                        <i class="flaticon2-calendar-3 kt-font-success"></i>
+                      </div>
+                      <div class="kt-notification__item-details">
+                        <div class="kt-notification__item-title kt-font-bold">
+                          Hồ sơ cá nhân
+                        </div>
+                        <div class="kt-notification__item-time">
+                          Thông tin cá nhân
+                        </div>
+                      </div>
+                    </a>
+                    <div class="kt-notification__custom kt-space-between">
+                      <a href="#"
+                        class="btn btn-label btn-label-brand btn-sm btn-bold">Đăng xuất</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
-            </button>
-          </div>
-        </div>
-        <div class="separator"></div>
-      </div>
-      
-      <!---->
-      <div>
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="1.png"
-                class="img-fluid"
-                alt="Slide 1"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="2.png"
-                class="img-fluid"
-                alt="Slide 2"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="3.png"
-                class="img-fluid"
-                alt="Slide 3"
-              />
             </div>
           </div>
-          <button class="carousel-control-prev"type="button"data-bs-target="#myCarousel"data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next"type="button"data-bs-target="#myCarousel"data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-      <!---->
-      <div class="banner">
-        <div class="spake" style="padding: 10px;"></div>
-        <div class="intro">
-          <div class="introContent">
-            <img src="Logo.png" style="height: 5rem; width: auto; max-height: 100%; display: block; padding-bottom: 15px;"/>
-            <p>
-              Trụ sở chính Tòa nhà FPT Polytechnic, Phố Trịnh Văn Bô, Nam Từ Liêm, Hà Nội
-            </p>
+          <div id="kt_content" class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+            <div id="kt_subheader" class="kt-subheader kt-grid__item">
+              <div class="kt-container kt-container--fluid">
+                <div class="kt-subheader__main">
+                  <h3 class="kt-subheader__title">Trang chủ</h3>
+                  <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+                  <div class="kt-subheader__breadcrumbs">
+                    <a href="" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="kt-portlet">
+                    <div class="kt-portlet__body kt-portlet__body--fit">
+                      <div class="row row-no-padding row-col-separator-xl">
+                        <div class="col-md-12 col-lg-3 col-xl-3" style="border-right: 1px solid rgb(235, 237, 242)">
+                          <div id="show-newsletter-student" class="kt-widget1" style="padding: 16px; height: 60vh">
+                            <h3>
+                              <a href="/danh-muc?category_id=1" class="kt-link kt-font-boldest">Thông tin học tập</a>
+                            </h3>
+                            <div class="kt-widget1__item" style="display: block">
+                              <div class="kt-widget1__info">
+                                <h6 class="kt-widget1__title">
+                                  <a href="#" class="kt-link" style="color: red; font-weight: bold">
+                                    🥇 THÔNG BÁO KẾ HOẠCH THI LẠI KỲ SPRING
+                                    2024
+                                  </a>
+                                </h6>
+                              </div>
+                            </div>
+                            <div type="button">
+                              <a href="#" class="btn btn-primary">Xem Thêm</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3 col-xl-3" style="border-right: 1px solid rgb(235, 237, 242)">
+                          <div id="show-newsletter-student" class="kt-widget1" style="padding: 16px; height: 60vh">
+                            <h3>
+                              <a href="#" class="kt-link kt-font-boldest">Thông tin hoạt động</a>
+                            </h3>
+                            <div class="kt-widget1__item" style="display: block">
+                              <div class="kt-widget1__info">
+                                <h6 class="kt-widget1__title">
+                                  <a href="#" class="kt-link" style="color: red; font-weight: bold">
+                                    🥇 [QHDN] BẢNG CẬP NHẬT THÔNG TIN VIỆC LÀM
+                                    2024
+                                  </a>
+                                </h6>
+                              </div>
+                            </div>
+                            <div type="button">
+                              <a href="#" class="btn btn-primary">Xem Thêm</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3 col-xl-3" style="border-right: 1px solid rgb(235, 237, 242)">
+                          <div id="show-newsletter-student" class="kt-widget1" style="padding: 16px; height: 60vh">
+                            <h3>
+                              <a href="#" class="kt-link kt-font-boldest">Thông tin học phí</a>
+                            </h3>
+                            <div class="kt-widget1__item" style="display: block">
+                              <div class="kt-widget1__info">
+                                <h6 class="kt-widget1__title">
+                                  <a href="#" class="kt-link" style="color: red; font-weight: bold">
+                                    🥉 THÔNG BÁO THU HỌC PHÍ FALL 2022
+                                  </a>
+                                </h6>
+                              </div>
+                            </div>
+                            <div type="button">
+                              <a href="#" class="btn btn-primary">Xem Thêm</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3 col-xl-3" style="border-right: 1px solid rgb(235, 237, 242)">
+                          <div id="show-newsletter-student" class="kt-widget1" style="padding: 16px; height: 60vh">
+                            <h3>
+                              <a href="#" class="kt-link kt-font-boldest">Thông tin việc làm</a>
+                            </h3>
+                            <div class="kt-widget1__item" style="display: block">
+                              <div class="kt-widget1__info">
+                                <h6 class="kt-widget1__title">
+                                  <a href="#" class="kt-link" style="color: red; font-weight: bold">
+                                    🥈 Nơi tiếp nhận hồ sơ ứng tuyển của sinh
+                                    viên tìm việc làm
+                                  </a>
+                                </h6>
+                              </div>
+                            </div>
+                            <div type="button">
+                              <a href="#" class="btn btn-primary">Xem Thêm</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" data-toggle="modal" data-target="#showNotiForStudent"
+                class="d-none btn btn-primary show-noti-student">
+              </button>
+              <div id="showNotiForStudent" tabindex="-1" role="dialog" aria-labelledby="showNotiForStudentLabel"
+                class="modal fade" aria-hidden="true" style="display: none">
+                <div role="document" class="modal-dialog modal-xl popup-modal-dialog">
+                  <div class="modal-content popup-modal-content">
+                    <div class="modal-header text-center border-bottom-0 pb-1 text-light">
+                      <button type="button" data-dismiss="modal" aria-label="Close" class="closes">X</button>
+                    </div>
+                    <div class="modal-body popup-modal-body">
+                      <h4 class="popup-header text-center mb-4">
+                        <span><strong>THÔNG BÁO</strong></span>
+                      </h4>
+                      <h3 class="popup-header text-center mb-4">
+                        THÔNG BÁO TRIỂN KHAI ƯU ĐÃI PHÍ HỌC LẠI CHO SINH VIÊN
+                      </h3>
+                      <div class="popup-today_timenow-created_by">
+                        <p>
+                          <!-- nội dung tb -->
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="footer">
-          <p>FPT Polytechnic © 2023, All Rights Reserved</p>
+          <div id="kt_footer" class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
+            <div class="kt-container kt-container--fluid">
+              <div class="footer-filter-by-campus" style="display: flex; flex-direction: column;justify-items: center;align-items: center; margin: 0 auto;">
+                  <img id="poly-logo" src="logo.png" width="250" />
+                  <h6 class="kt-widget1__title">
+                    <a class="kt-link address">
+                      Số 288, Nguyễn Văn Linh, phường An Khánh, quận Ninh
+                      Kiều, Tp. Cần Thơ.
+                    </a>
+                  </h6>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</body>
-<script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "20%";
-    }
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
+  <script src="https://ap.poly.edu.vn/theme/student_v2/vendors/global/vendors.bundle.js"
+    type="text/javascript"></script>
+  <script src="https://ap.poly.edu.vn/theme/student_v2/js/demo1/scripts.bundle.js" type="text/javascript"></script>
+  <!-- thông báo -->
+  <script>
+    $(".otp-term-modal").click();
+    $(".is-valid-phone-all-modal").click();
+    $(".show-noti-student").click();
   </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
