@@ -25,27 +25,30 @@ include('../Asm/src/Public/link.php');
               <form id="loginForm">
                 <div class="form-group">
                   <label for="loginUsername">Tên đăng nhập:</label>
-                  <input type="text" id="loginUsername" name="loginUsername" required>
+                  <input type="text" id="loginUsername" name="loginUsername">
                 </div>
                 <div class="form-group">
                   <label for="loginPassword">Mật khẩu:</label>
-                  <input type="password" id="loginPassword" name="loginPassword" required>
+                  <input type="password" id="loginPassword" name="loginPassword">
                 </div>
-                <button type="button" onclick="login()" class="off">Đăng nhập</button>
+                <button type="button" onclick="login()" class="off" name="signin">Đăng nhập</button>
               </form>
+              <!-- Form Đăng nhập -->
+
               <!-- Form Đăng ký -->
               <form id="registerForm" style="display: none;">
                 <div class="form-group">
                   <label for="registerUsername">Tên đăng nhập:</label>
-                  <input type="text" id="registerUsername" name="registerUsername" required>
+                  <input type="text" id="registerUsername" name="registerUsername">
                 </div>
                 <div class="form-group">
                   <label for="registerPassword">Mật khẩu:</label>
-                  <input type="password" id="registerPassword" name="registerPassword" required>
+                  <input type="password" id="registerPassword" name="registerPassword">
                 </div>
-                <button type="button" onclick="register()" class="off">Đăng ký</button>
+                <button type="button" onclick="register()" class="off" name="signup">Đăng ký</button>
               </form>
-              <p id="toggleText">Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a></p>
+                <!-- Form Đăng ký -->
+              <p id="toggleText" style="padding-top: 5px;">Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a></p>
               <button onclick="closePopup('student')" class="off" 
               style="margin: 0 auto; display: flex;
               flex-direction: column;
@@ -70,7 +73,7 @@ include('../Asm/src/Public/link.php');
         </div>
         <div class="separator"></div>
       </div>
-      <!---->
+      <!-- silder-->
       <div>
         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -106,7 +109,9 @@ include('../Asm/src/Public/link.php');
           </button>
         </div>
       </div>
-      <!---->
+      <!-- silder-->
+
+      <!-- banner-->
       <div class="banner">
         <div class="spake" style="padding: 10px;"></div>
         <div class="intro">
@@ -121,6 +126,8 @@ include('../Asm/src/Public/link.php');
           <p>FPT Polytechnic © 2023, All Rights Reserved</p>
         </div>
       </div>
+      <!-- banner-->
+
     </div>
   </div>
 </body>
@@ -131,14 +138,12 @@ include('../Asm/src/Public/link.php');
       document.getElementById('overlay').style.display = 'block';
     }
   }
-
   function closePopup(type) {
     if (type === 'student') {
       document.getElementById('studentPopup').style.display = 'none';
       document.getElementById('overlay').style.display = 'none';
     }
   }
-
   function toggleForm() {
     var loginForm = document.getElementById('loginForm');
     var registerForm = document.getElementById('registerForm');
@@ -154,18 +159,8 @@ include('../Asm/src/Public/link.php');
       toggleText.innerHTML = 'Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a>';
     }
   }
-
-  function login() {
-    // Thực hiện xử lý đăng nhập
-    alert('Đăng nhập thành công!');
-  }
-
-  function register() {
-    // Thực hiện xử lý đăng ký
-    alert('Đăng ký thành công!');
-  }
-
 </script>
+    <!-- saidbar-->
 <script>
     function openNav() {
       document.getElementById("myNav").style.width = "20%";

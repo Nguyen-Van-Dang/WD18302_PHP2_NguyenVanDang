@@ -1,9 +1,7 @@
 <?php
-  include('../Asm/src/Public/link.php');
-include '../Asm/src/Component/sidebar.php';
-include '../Asm/src/Component/header.php';
+include '../Component/sidebar.php';
+include '../Component/header.php';
 ?>
-
 <body>
     <div class="content">
         <main>
@@ -72,7 +70,7 @@ include '../Asm/src/Component/header.php';
                         <tbody>
                             <tr>
                                 <td>
-                                    <img src="../Asm/src/Public/img/profile-1.jpg">
+                                    <img src="../../../Public/img/profile-1.jpg">
                                     <p>John Doe</p>
                                 </td>
                                 <td>14-08-2023</td>
@@ -80,7 +78,7 @@ include '../Asm/src/Component/header.php';
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../Asm/src/Public/img/profile-1.jpg">
+                                    <img src="../../../Public/img/profile-1.jpg">
                                     <p>John Doe</p>
                                 </td>
                                 <td>14-08-2023</td>
@@ -88,7 +86,7 @@ include '../Asm/src/Component/header.php';
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../Asm/src/Public/img/profile-1.jpg">
+                                    <img src="../../../Public/img/profile-1.jpg">
                                     <p>John Doe</p>
                                 </td>
                                 <td>14-08-2023</td>
@@ -134,4 +132,3 @@ include '../Asm/src/Component/header.php';
         </main>
     </div>
 </body>
-<script src="../Asm/src/Public/js/indexAdmin.js"></script>
