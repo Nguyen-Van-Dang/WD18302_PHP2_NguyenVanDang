@@ -2,15 +2,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang chủ | FPT Polytechnic</title>
-  <?
-  include('../Asm/src/Public/link.php');
-  ?>
 </head>
+<?
+  include('../../../Public/link.php');
+?>
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed">
   <div id="app">
     <div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed">
       <div class="kt-header-mobile__logo">
-        <a href=""><img alt="Logo" src="../Asm/src/Public/img/logo.png" width="135" /></a>
+        <a href=""><img alt="Logo" src="../../../Public/img/logo.png" width="135" /></a>
       </div>
       <div class="kt-header-mobile__toolbar">
         <button id="kt_aside_mobile_toggler" class="kt-header-mobile__toggler kt-header-mobile__toggler--left">
@@ -480,9 +480,6 @@
       </div>
     </div>
   </div>
-  <script src="https://ap.poly.edu.vn/theme/student_v2/vendors/global/vendors.bundle.js"
-    type="text/javascript"></script>
-  <script src="https://ap.poly.edu.vn/theme/student_v2/js/demo1/scripts.bundle.js" type="text/javascript"></script>
   <!-- thông báo -->
   <script>
     $(".otp-term-modal").click();

@@ -27,7 +27,7 @@
                 <span class="count">0</span>
             </a>
             <a href="#" class="profile">
-                <img src="../../images/logo.png">
+                <img src="../Asm/src/Public/img/logo.png">
             </a>
         </nav>
         <!-- End of Navbar -->

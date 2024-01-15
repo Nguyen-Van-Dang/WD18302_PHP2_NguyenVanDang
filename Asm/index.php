@@ -3,7 +3,7 @@ require_once "vendor/autoload.php";
 
 use Src\Model\Database;
 
-$Data = new Database;
+// $Data = new Database;
 
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {
@@ -15,19 +15,16 @@ if (isset($_GET['pages'])) {
             break;
         case 'admin':
             if (!isset($_COOKIE['role'])) {
-                include './User/resources/home.php';
+                include 'login.php';
             } else {
                 if ($_COOKIE['role'] == 1) {
                     switch ($_GET['action']) {
                         case 'Dashboard':
-                            include './Admin/resources/admin/dashboard.php';
-                            break;
-                        case 'productList':
-                            include './admin/resources/product/ProductList.php';
+                            include './src/View/ViewAdmin/Resources/dashboard.php';
                             break;
 
                         default:
-                            include './admin/resources/admin/Dashboard.php';
+                            include './src/View/ViewAdmin/Resources/dashboard.php';
                             break;
                     }
                     break;
@@ -35,16 +32,13 @@ if (isset($_GET['pages'])) {
             }
         case 'user':
             switch ($_GET['action']) {
+                case 'Home':
+                    include './src/View/ViewUser/Resources/home.php';
+                    break;
 
-                case 'home':
-                    include './User/resources/home.php';
-                    break;
-                case 'products':
-                    include './User/resources/products.php';
-                    break;
 
                 default:
-                    include './User/resources/home.php';
+                    include './src/View/ViewUser/Resources/home.php';
                     break;
             }
             break;
@@ -52,5 +46,3 @@ if (isset($_GET['pages'])) {
 } else {
     include 'login.php';
 };
-
-?>
