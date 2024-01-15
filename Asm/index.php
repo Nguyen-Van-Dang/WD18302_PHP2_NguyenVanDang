@@ -1,4 +1,8 @@
 <?
+require_once "vendor/autoload.php";
+use Src\Model\Database;
+$Data = new Database;
+
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {
         case 'login':
@@ -16,7 +20,6 @@ if (isset($_GET['pages'])) {
                         case 'Dashboard':
                             include './Admin/resources/admin/dashboard.php';
                             break;
-                            // products
                         case 'productList':
                             include './admin/resources/product/ProductList.php';
                             break;
@@ -30,11 +33,10 @@ if (isset($_GET['pages'])) {
             }
         case 'user':
             switch ($_GET['action']) {
-                //trang chủ
+
                 case 'home':
                     include './User/resources/home.php';
                     break;
-                //trang sản phẩm
                 case 'products':
                     include './User/resources/products.php';
                     break;
@@ -46,7 +48,7 @@ if (isset($_GET['pages'])) {
             break;
     }
 } else {
-    include './User/resources/home.php';
+    include 'login.php';
 };
 
 ?>
