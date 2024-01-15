@@ -19,11 +19,11 @@
     <div class="kt-grid kt-grid--hor kt-grid--root">
       <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
         <?
-        include '../Component/saidbar.php'
+        include 'src/View/ViewUser/Component/saidbar.php'
         ?>
         <div id="kt_wrapper" class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper">
           <?
-          include '../Component/header.php'
+          include 'src/View/ViewUser/Component/header.php'
           ?>
           <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
             <div class="row">
@@ -145,7 +145,7 @@
         </div>
         <!-- footer -->
         <?
-        include '../Component/footer.php'
+        include 'src/View/ViewUser/Component/footer.php'
         ?>
         <!-- footer -->
       </div>

@@ -1,13 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trường Cao đẳng FPT Polytechnic</title>
-  <?
+<?
 include('../Asm/src/Public/link.php');
 ?>
-</head>
+
+<?
+if (isset($_POST["signin"])) {
+  $email = $_POST["email"];
+  $pass = $_POST["pass"];
+  if (empty($email) && empty($pass)) {
+    echo "<script>alert('Vui lòng nhập Email và mật khẩu!')</script>";
+  } else {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email)) {
+      echo '<script>alert("Email không hợp lệ !!!")</script>';
+    } else {
+      if ($user->checkAccount($email, $pass)) {
+        echo '<script>alert("Tài Khoản Đã Bị Vô hiệu hóa!!")</script>';
+      } else {
+        if ($user->checkUser($email, $pass)) {
+          foreach (($user->checkRole($email, $pass)) as $row) {
+            if ($row == "1") {
+              $_SESSION['user'] = $email;
+              setcookie("role", '1', time() + 3600, "/");
+              $userid = $user->getInfoUserEmail($email, 'user_id');
+              setcookie("userID", $userid, time() + 3600, "/");
+              // header('location: ./?pages=user&action=home');
+            } else {
+              $result = $user->userid($email, $pass);
+              $_SESSION['user'] = $email;
+              setcookie("role", '2', time() + 3600, "/");
+              $userid = $user->getInfoUserEmail($email, 'user_id');
+              setcookie("userID", $userid, time() + 3600, "/");
+              // header('location: ./?pages=user&action=home');
+            }
+          }
+        } else {
+          echo '<script>alert("Sai mật khẩu !!!")</script>';
+        }
+      }
+    }
+  }
+}
+?>
+
 <body>
   <div id="app1">
     <div class="app2">
@@ -22,21 +55,41 @@ include('../Asm/src/Public/link.php');
             <div id="studentPopup" class="popup">
               <h2>Đăng ký và Đăng nhập - Sinh viên</h2>
               <!-- Form Đăng nhập -->
-              <form id="loginForm">
+              <form id="loginForm" method="post">
                 <div class="form-group">
                   <label for="loginUsername">Tên đăng nhập:</label>
                   <input type="text" id="loginUsername" name="loginUsername">
+                  <?
+                  if (isset($_POST["signin"])) {
+                    $user_account = $_POST["user_account"];
+                    if ($user_account == "") {
+                      echo "Xin vui lòng nhập tài khoản";
+                    } else {
+                      echo '';
+                    }
+                  }
+                  ?>
                 </div>
                 <div class="form-group">
                   <label for="loginPassword">Mật khẩu:</label>
                   <input type="password" id="loginPassword" name="loginPassword">
+                  <?
+                  if (isset($_POST["signin"])) {
+                    $user_password = $_POST["user_password"];
+                    if ($user_password == "") {
+                      echo "Xin vui lòng nhập mật khẩu";
+                    } else {
+                      echo '';
+                    }
+                  }
+                  ?>
                 </div>
                 <button type="button" onclick="login()" class="off" name="signin">Đăng nhập</button>
               </form>
               <!-- Form Đăng nhập -->
 
               <!-- Form Đăng ký -->
-              <form id="registerForm" style="display: none;">
+              <form id="registerForm" style="display: none;" method="post">
                 <div class="form-group">
                   <label for="registerUsername">Tên đăng nhập:</label>
                   <input type="text" id="registerUsername" name="registerUsername">
@@ -47,10 +100,9 @@ include('../Asm/src/Public/link.php');
                 </div>
                 <button type="button" onclick="register()" class="off" name="signup">Đăng ký</button>
               </form>
-                <!-- Form Đăng ký -->
+              <!-- Form Đăng ký -->
               <p id="toggleText" style="padding-top: 5px;">Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a></p>
-              <button onclick="closePopup('student')" class="off" 
-              style="margin: 0 auto; display: flex;
+              <button onclick="closePopup('student')" class="off" style="margin: 0 auto; display: flex;
               flex-direction: column;
               align-items: center;
               justify-content: center;">Đóng</button>
@@ -58,7 +110,7 @@ include('../Asm/src/Public/link.php');
             <div id="overlay1" class="overlay1" onclick="closePopup('student')"></div>
             <button class="hamburgerBtn">
               <div id="myNav" class="overlay">
-                <a href="javascript:void(0)"class="closebtn"onclick="closeNav()">&times;</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content-ress">
                   <a href="#" class="hover1" style="color: white;">Liên hệ</a>
                 </div>
@@ -78,32 +130,20 @@ include('../Asm/src/Public/link.php');
         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                src="../Asm/src/Public/img/1.png"
-                class="img-fluid"
-                alt="Slide 1"
-              />
+              <img src="../Asm/src/Public/img/1.png" class="img-fluid" alt="Slide 1" />
             </div>
             <div class="carousel-item">
-              <img
-                src="../Asm/src/Public/img/2.png"
-                class="img-fluid"
-                alt="Slide 2"
-              />
+              <img src="../Asm/src/Public/img/2.png" class="img-fluid" alt="Slide 2" />
             </div>
             <div class="carousel-item">
-              <img
-                src="../Asm/src/Public/img/3.png"
-                class="img-fluid"
-                alt="Slide 3"
-              />
+              <img src="../Asm/src/Public/img/3.png" class="img-fluid" alt="Slide 3" />
             </div>
           </div>
-          <button class="carousel-control-prev"type="button"data-bs-target="#myCarousel"data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next"type="button"data-bs-target="#myCarousel"data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -116,7 +156,7 @@ include('../Asm/src/Public/link.php');
         <div class="spake" style="padding: 10px;"></div>
         <div class="intro">
           <div class="introContent">
-            <img src="../Asm/src/Public/img/Logo.png" style="height: 5rem; width: auto; max-height: 100%; display: block; padding-bottom: 15px;"/>
+            <img src="../Asm/src/Public/img/Logo.png" style="height: 5rem; width: auto; max-height: 100%; display: block; padding-bottom: 15px;" />
             <p>
               Trụ sở chính Tòa nhà FPT Polytechnic, Phố Trịnh Văn Bô, Nam Từ Liêm, Hà Nội
             </p>
@@ -138,12 +178,14 @@ include('../Asm/src/Public/link.php');
       document.getElementById('overlay').style.display = 'block';
     }
   }
+
   function closePopup(type) {
     if (type === 'student') {
       document.getElementById('studentPopup').style.display = 'none';
       document.getElementById('overlay').style.display = 'none';
     }
   }
+
   function toggleForm() {
     var loginForm = document.getElementById('loginForm');
     var registerForm = document.getElementById('registerForm');
@@ -160,14 +202,15 @@ include('../Asm/src/Public/link.php');
     }
   }
 </script>
-    <!-- saidbar-->
+<!-- saidbar-->
 <script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "20%";
-    }
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
-</script>
-</html>
+  function openNav() {
+    document.getElementById("myNav").style.width = "20%";
+  }
 
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
+</script>
+
+</html>

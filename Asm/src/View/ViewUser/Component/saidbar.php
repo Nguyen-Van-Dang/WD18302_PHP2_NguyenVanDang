@@ -1,8 +1,7 @@
-
 <div id="kt_aside" class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" style="opacity: 1">
     <div id="kt_aside_brand" class="kt-aside__brand kt-grid__item" kt-hidden-height="65">
         <div class="kt-aside__brand-logo">
-            <a href=""><img alt="Logo" src="../../../Public/img/logo.png" width="135" /></a>
+            <a href=""><img alt="Logo" src="src/Public/img/logo.png" width="135" /></a>
         </div>
         <div class="kt-aside__brand-tools">
             <button id="kt_aside_toggler" class="kt-aside__brand-aside-toggler">

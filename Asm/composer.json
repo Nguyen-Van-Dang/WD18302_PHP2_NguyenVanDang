@@ -2,12 +2,13 @@
     "name": "php/oop",
     "autoload": {
         "psr-4": {
-            "Src": "src/"
+            "Src\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "ASMPHP2"
+            "name": "dang12e",
+            "email": "ctytnhh5thanhvienvogiacu@gmail.com"
         }
     ],
     "require": {}

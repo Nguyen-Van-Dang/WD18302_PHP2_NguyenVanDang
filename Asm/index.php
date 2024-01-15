@@ -6,8 +6,9 @@ include('./src/Public//link.php');
 
 require_once "vendor/autoload.php";
 
-// use Src\Model\Database;
-// $Data = new Database;
+use Src\Model\Database;
+
+$Data = new Database;   
 
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {
@@ -23,7 +24,7 @@ if (isset($_GET['pages'])) {
             } else {
                 if ($_COOKIE['role'] == 1) {
                     switch ($_GET['action']) {
-                        //trang chu
+                            //trang chu
                         case 'Dashboard':
                             include './src/View/ViewAdmin/Resources/dashboard.php';
                             break;
@@ -37,7 +38,7 @@ if (isset($_GET['pages'])) {
             }
         case 'user':
             switch ($_GET['action']) {
-                //trang chu
+                    //trang chu
                 case 'Home':
                     include './src/View/ViewUser/Resources/home.php';
                     break;

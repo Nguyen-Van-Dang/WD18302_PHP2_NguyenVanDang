@@ -28,13 +28,10 @@
                 </div>
                 <div class="kt-notification">
                     <a href="#" class="kt-notification__item">
-                        <div class="kt-notification__item-icon">
-                            <i class="flaticon2-calendar-3 kt-font-success"></i>
+                        <div class="kt-notification">
+                            <img src="src/Public/img/user.jpg" alt="" style="width: 50px; height:50px;">
                         </div>
-                        <div class="kt-notification__item-details">
-                            <div class="kt-notification__item-title kt-font-bold">
-                                Hồ sơ cá nhân
-                            </div>
+                        <div class="kt-notification__item-details" style="padding-left: 10px;">
                             <div class="kt-notification__item-time">
                                 Thông tin cá nhân
                             </div>
