@@ -1,6 +1,8 @@
 <?
 require_once "vendor/autoload.php";
+
 use Src\Model\Database;
+
 $Data = new Database;
 
 if (isset($_GET['pages'])) {
