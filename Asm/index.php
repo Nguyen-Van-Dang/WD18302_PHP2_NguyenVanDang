@@ -1,5 +1,11 @@
 <?
 session_start();
+require_once "vendor/autoload.php";
+use Src\Model\Database;
+use Src\Model\UserFunction;
+
+$Data = new Database;
+$user = new UserFunction();
 if (!isset($_COOKIE['userID'])) {
     header("location: login.php");
 }
@@ -8,7 +14,6 @@ include('./src/Public/linkAdmin.php');
 // User
 include('./src/Public/link.php');
 
-require_once "vendor/autoload.php";
 
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {

@@ -93,20 +93,45 @@ if (isset($_POST["signin"])) {
               <!-- Form Đăng nhập -->
 
               <!-- Form Đăng ký -->
+              <?
+              function isValidPhoneNumber($user_phone)
+              { // Biểu thức chính quy bắt lỗi SĐT
+                $pattern = '/^0\d{9}$/';
+                return preg_match($pattern, $user_phone);
+              }
+              if (isset($_POST["signup"])) {
+                $pass1 = $_POST["pass1"];
+                $pass2 = $_POST["pass2"];
+                $user_account = $_POST["user_name1"];
+                $user_phone = $_POST["user_phone"];
+                if (!empty($pass1) && !empty($pass2) && !empty($user_account) && !empty($user_phone) && $pass1 == $pass2) {
+                    if (isValidPhoneNumber($user_phone)) {
+                      $user->user_create($user_account, $user_phone, $pass1);
+                      echo '<script>alert("Chúc mừng bạn đã đăng ký thành công !!!")</script>';
+                    } else {
+                      echo '<script>alert("Vui lòng nhập đúng định dạng số điện thoại !!!")</script>';
+                    }
+                  }
+                }
+              ?>
               <form id="registerForm" style="display: none;" method="post">
                 <div class="form-group">
                   <label for="registerUsername">Tên đăng nhập:</label>
-                  <input type="text" id="registerUsername" name="registerUsername">
+                  <input type="text" id="registerUsername" name="user_name1">
+                </div>
+                <div class="form-group">
+                  <label for="registerPassword">Số điện thoại:</label>
+                  <input type="text" id="registerPassword" name="user_phone">
                 </div>
                 <div class="form-group">
                   <label for="registerPassword">Mật khẩu:</label>
-                  <input type="password" id="registerPassword" name="registerPassword">
+                  <input type="password" id="registerPassword" name="pass1">
                 </div>
                 <div class="form-group">
                   <label for="registerPassword">Nhập lại mật khẩu:</label>
-                  <input type="password" id="registerPassword" name="registerPassword">
+                  <input type="password" id="registerPassword" name="pass2">
                 </div>
-                <button type="button" onclick="register()" class="off" name="signup">Đăng ký</button>
+                <button type="submit" onclick="register()" class="off" name="signup">Đăng ký</button>
               </form>
               <!-- Form Đăng ký -->
               <p id="toggleText" style="padding-top: 5px;">Chưa có tài khoản? <a href="#" onclick="toggleForm()">Đăng ký ngay</a></p>
@@ -223,4 +248,4 @@ if (isset($_POST["signin"])) {
 
 <?
 
-include('./src/Public/link.php');?>
+include('./src/Public/link.php'); ?>

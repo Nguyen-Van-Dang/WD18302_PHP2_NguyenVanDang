@@ -56,4 +56,14 @@ class UserFunction
         $result = $Data->pdo_query_one($select);
         return $result;
     }
+
+    // đăng kí
+
+    function user_create($user_name, $user_phone_number, $pass1)
+    {
+        $Data = new Database();
+        $sql = "INSERT INTO sign_in(user_name, user_phone_number, user_password, role_id, is_deleted ) VALUES ('$user_name', '$user_phone_number', '$pass1', 2, 2)";
+        $result = $Data->pdo_execute($sql);
+        return $result;
+    }
 }
