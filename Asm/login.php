@@ -1,35 +1,39 @@
 <?
-include('../Asm/src/Public/link.php');
-?>
+require_once "vendor/autoload.php";
 
-<?
+use Src\Model\Database;
+use Src\Model\UserFunction;
+
+$Data = new Database;
+$user = new UserFunction();
+
 if (isset($_POST["signin"])) {
-  $email = $_POST["email"];
-  $pass = $_POST["pass"];
-  if (empty($email) && empty($pass)) {
-    echo "<script>alert('Vui lòng nhập Email và mật khẩu!')</script>";
+  $user_account = $_POST["user_account"];
+  $user_password = $_POST["user_password"];
+  if (empty($user_account) && empty($user_password)) {
+    echo "<script>alert('Vui lòng nhập tài khoản và mật khẩu!')</script>";
   } else {
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email)) {
-      echo '<script>alert("Email không hợp lệ !!!")</script>';
+    if (empty($user_account)) {
+      echo '<script>alert("Tài khoản không hợp lệ !!!")</script>';
     } else {
-      if ($user->checkAccount($email, $pass)) {
+      if ($user->checkAccount($user_account, $user_password)) {
         echo '<script>alert("Tài Khoản Đã Bị Vô hiệu hóa!!")</script>';
       } else {
-        if ($user->checkUser($email, $pass)) {
-          foreach (($user->checkRole($email, $pass)) as $row) {
+        if ($user->checkUser($user_account, $user_password)) {
+          foreach (($user->checkRole($user_account, $user_password)) as $row) {
             if ($row == "1") {
-              $_SESSION['user'] = $email;
+              $_SESSION['user_account'] = $user_account;
               setcookie("role", '1', time() + 3600, "/");
-              $userid = $user->getInfoUserEmail($email, 'user_id');
-              setcookie("userID", $userid, time() + 3600, "/");
-              // header('location: ./?pages=user&action=home');
+              $user_id = $user->get_Info_User_account($user_account, 'user_account');
+              setcookie("userID", $user_id, time() + 3600, "/");
+              header('location: index.php?pages=user&action=Home');
             } else {
-              $result = $user->userid($email, $pass);
-              $_SESSION['user'] = $email;
+              $result = $user->user_id($user_account, $user_password);
+              $_SESSION['user_account'] = $user_account;
               setcookie("role", '2', time() + 3600, "/");
-              $userid = $user->getInfoUserEmail($email, 'user_id');
-              setcookie("userID", $userid, time() + 3600, "/");
-              // header('location: ./?pages=user&action=home');
+              $user_id = $user->get_Info_User_account($user_account, 'user_account');
+              setcookie("userID", $user_id, time() + 3600, "/");
+              header('location: index.php?pages=user&action=Home');
             }
           }
         } else {
@@ -58,7 +62,7 @@ if (isset($_POST["signin"])) {
               <form id="loginForm" method="post">
                 <div class="form-group">
                   <label for="loginUsername">Tên đăng nhập:</label>
-                  <input type="text" id="loginUsername" name="loginUsername">
+                  <input type="text" id="loginUsername" name="user_account">
                   <?
                   if (isset($_POST["signin"])) {
                     $user_account = $_POST["user_account"];
@@ -72,7 +76,7 @@ if (isset($_POST["signin"])) {
                 </div>
                 <div class="form-group">
                   <label for="loginPassword">Mật khẩu:</label>
-                  <input type="password" id="loginPassword" name="loginPassword">
+                  <input type="password" id="loginPassword" name="user_password">
                   <?
                   if (isset($_POST["signin"])) {
                     $user_password = $_POST["user_password"];
@@ -84,7 +88,7 @@ if (isset($_POST["signin"])) {
                   }
                   ?>
                 </div>
-                <button type="button" onclick="login()" class="off" name="signin">Đăng nhập</button>
+                <button type="submit" onclick="login()" class="off" name="signin">Đăng nhập</button>
               </form>
               <!-- Form Đăng nhập -->
 
@@ -96,6 +100,10 @@ if (isset($_POST["signin"])) {
                 </div>
                 <div class="form-group">
                   <label for="registerPassword">Mật khẩu:</label>
+                  <input type="password" id="registerPassword" name="registerPassword">
+                </div>
+                <div class="form-group">
+                  <label for="registerPassword">Nhập lại mật khẩu:</label>
                   <input type="password" id="registerPassword" name="registerPassword">
                 </div>
                 <button type="button" onclick="register()" class="off" name="signup">Đăng ký</button>
@@ -213,4 +221,6 @@ if (isset($_POST["signin"])) {
   }
 </script>
 
-</html>
+<?
+
+include('./src/Public/link.php');?>

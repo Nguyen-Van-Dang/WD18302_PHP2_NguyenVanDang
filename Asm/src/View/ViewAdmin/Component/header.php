@@ -1,6 +1,4 @@
-
 <body>
-    <!-- Main Content -->
     <div class="content">
         <!-- Navbar -->
         <nav>
@@ -18,10 +16,9 @@
                 <span class="count">0</span>
             </a>
             <a href="#" class="profile">
-                <img src="../../../Public/img/logoAdmin.png">
+                <img src="src/Public/img/logoAdmin.png">
             </a>
         </nav>
         <!-- End of Navbar -->
     </div>
-    <script src="../../../Public/js/indexAdmin.js"></script>
 </body>

@@ -1,6 +1,6 @@
 <?php
-include '../Component/sidebar.php';
-include '../Component/header.php';
+include 'src/View/ViewAdmin/Component/sidebar.php';
+include 'src/View/ViewAdmin/Component/header.php';
 ?>
 <body>
     <div class="content">
@@ -70,7 +70,7 @@ include '../Component/header.php';
                         <tbody>
                             <tr>
                                 <td>
-                                    <img src="../../../Public/img/profile-1.jpg">
+                                    <img src="src/Public/img/profile-1.jpg">
                                     <p>John Doe</p>
                                 </td>
                                 <td>14-08-2023</td>
@@ -78,7 +78,7 @@ include '../Component/header.php';
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../../../Public/img/profile-1.jpg">
+                                    <img src="src/Public/img/profile-1.jpg">
                                     <p>John Doe</p>
                                 </td>
                                 <td>14-08-2023</td>
@@ -86,7 +86,7 @@ include '../Component/header.php';
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="../../../Public/img/profile-1.jpg">
+                                    <img src="src/Public/img/profile-1.jpg">
                                     <p>John Doe</p>
                                 </td>
                                 <td>14-08-2023</td>

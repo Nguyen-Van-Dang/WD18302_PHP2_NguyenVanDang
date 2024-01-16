@@ -1,14 +1,14 @@
 <?
+session_start();
+if (!isset($_COOKIE['userID'])) {
+    header("location: login.php");
+}
 // Admin
 include('./src/Public/linkAdmin.php');
 // User
-include('./src/Public//link.php');
+include('./src/Public/link.php');
 
 require_once "vendor/autoload.php";
-
-use Src\Model\Database;
-
-$Data = new Database;   
 
 if (isset($_GET['pages'])) {
     switch ($_GET['pages']) {
@@ -43,13 +43,20 @@ if (isset($_GET['pages'])) {
                     include './src/View/ViewUser/Resources/home.php';
                     break;
 
-
-                default:
-                    include './src/View/ViewUser/Resources/home.php';
+                    //đăng xuất
+                case "Logout":
+                    setcookie("viewCount", '', time() + 1, "/");
+                    setcookie("role", '', time() + 1, "/");
+                    setcookie("userID", '', time() + 1, "/");
+                    setcookie("Oauth", '', time() + 1, "/");
+                    header("location: login.php");
                     break;
             }
+            break;
+        default:
+            include './src/View/ViewUser/Resources/home.php';
             break;
     }
 } else {
     include 'login.php';
-};
+}

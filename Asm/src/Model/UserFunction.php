@@ -2,58 +2,58 @@
 
 namespace Src\Model;
 
+use Src\Model\Database;
+
 class UserFunction
 {
-
-    public function checkAccount($Email, $password)
+    public function checkAccount($user_account, $user_password)
     {
-        $pass_hash = md5($password);
+        // $user_password = md5($user_password);
         $Data = new Database();
-        $select = "SELECT * FROM user WHERE email = '$Email' AND user_password = '$pass_hash' AND is_deleted = 2";
-        $result = $db->pdo_query_one($select);
+        $select = "SELECT * FROM sign_in WHERE user_account = '$user_account' AND user_password = '$user_password' AND is_deleted = 2";
+        $result = $Data->pdo_query_one($select);
         if ($result != null)
             return true;
         else
             return false;
     }
 
-    public function checkUser($Email, $password)
+    public function checkUser($user_account, $user_password)
     {
-        $pass_hash = md5($password);
+        // $user_password = md5($user_password);
         $Data = new Database();
-        $select = "SELECT * FROM user WHERE email = '$Email' AND user_password = '$pass_hash'";
-        $result = $db->pdo_query_one($select);
+        $select = "SELECT * FROM sign_in WHERE user_account = '$user_account' AND user_password = '$user_password'";
+        $result = $Data->pdo_query_one($select);
         if ($result != null)
             return true;
         else
             return false;
     }
 
-    public function checkRole($Email, $password)
+    public function checkRole($user_account, $user_password)
     {
-        $pass_hash = md5($password);
+        // $user_password = md5($user_password);
         $Data = new Database();
-        $select = "SELECT user.role_id FROM user, `role` 
-        WHERE user.role_id = role.role_id AND email = '$Email' AND user_password ='$pass_hash'";
-        $result = $db->pdo_query_one($select);
+        $select = "SELECT sign_in.role_id FROM sign_in, `role` 
+        WHERE sign_in.role_id = role.role_id AND user_account = '$user_account' AND user_password ='$user_password'";
+        $result = $Data->pdo_query_one($select);
         return $result;
     }
 
-    function getInfoUserEmail($Email, $column)
+    function get_Info_User_account($user_account, $column)
     {
         $Data = new Database();
-        $sql = "SELECT * FROM user WHERE email ='$Email'";
-        $result = $db->pdo_query($sql);
+        $sql = "SELECT * FROM sign_in WHERE user_account ='$user_account'";
+        $result = $Data->pdo_query($sql);
         foreach ($result as $row) {
             return $row[$column];
         }
     }
-
-    public function userid($userAccount, $password)
+    public function user_id($user_account, $user_password)
     {
         $Data = new Database();
-        $select = "SELECT user_id FROM khachhang WHERE ho_ten='$userAccount' AND mat_khau='$password'";
-        $result = $db->pdo_query_one($select);
+        $select = "SELECT user_id FROM sign_in WHERE user_account='$user_account' AND user_password='$user_password'";
+        $result = $Data->pdo_query_one($select);
         return $result;
     }
 }

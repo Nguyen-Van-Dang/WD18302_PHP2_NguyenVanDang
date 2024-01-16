@@ -1,4 +1,4 @@
-<!-- cssadmin -->
+<!-- css admin -->
 <link rel="stylesheet" href="/Asm/src/Public/css/styleAdmin.css">
 <!-- admin -->
-<script src="../js/indexAdmin.js"></script>
+<script src="/Asm/src/Public/js/indexAdmin.js"></script>

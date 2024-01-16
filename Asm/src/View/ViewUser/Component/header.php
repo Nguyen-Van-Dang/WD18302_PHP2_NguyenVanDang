@@ -1,4 +1,3 @@
-
 <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed">
     <div id="kt_header_menu_wrapper" class="kt-header-menu-wrapper" style="opacity: 1"></div>
     <div class="kt-header__topbar">
@@ -34,11 +33,27 @@
                         <div class="kt-notification__item-details" style="padding-left: 10px;">
                             <div class="kt-notification__item-time">
                                 Thông tin cá nhân
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
                             </div>
                         </div>
                     </a>
                     <div class="kt-notification__custom kt-space-between">
-                        <a href="#" class="btn btn-label btn-label-brand btn-sm btn-bold">Đăng xuất</a>
+                        <?
+                        if (isset($_COOKIE['userID'])) {
+                            if ($_COOKIE['role'] == 2) {
+                                echo '
+                                <div class="kt-notification__custom kt-space-between">
+                                        <a href="index.php?pages=user&action=Logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Đăng xuất</a>
+                                        </div>';
+                            } else {
+                                echo '
+                                <div class="kt-notification__custom kt-space-between">
+                                <a href="index.php?pages=admin&action=Dashboard" class="btn btn-label btn-label-brand btn-sm btn-bold">Quản trị</a>
+                                        <a href="index.php?pages=user&action=Logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Đăng xuất</a>
+                                        </div>';
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -52,7 +67,7 @@
                 <h3 class="kt-subheader__title">Trang chủ</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <div class="kt-subheader__breadcrumbs">
-                    <a href="" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <a href="" class="kt-subheader__breadcrumbs-home"><ion-icon name="home-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
