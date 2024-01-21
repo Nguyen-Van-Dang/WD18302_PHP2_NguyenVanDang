@@ -245,7 +245,6 @@ if (isset($_POST["signin"])) {
     document.getElementById("myNav").style.width = "0%";
   }
 </script>
-
 <?
-
-include('./src/Public/link.php'); ?>
+include('./src/Public/link.php'); 
+?>
