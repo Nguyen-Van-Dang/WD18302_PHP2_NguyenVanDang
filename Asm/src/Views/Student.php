@@ -19,13 +19,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <td>dang</td>
-                                <td>30/9/2004</td>
-                                <td>123</td>
-                                <td>CM</td>
-                                <form action="?url=HomeController/AddStudent" method="post">
-                                    <td><button type="submit" class="btn btn-primary" name="submit">thêm</button></td>
-                                </form>
+                            <?
+                                $conn = $Data->pdo_get_connection();
+                                $stmt = $conn->prepare("SELECT * FROM `student`");
+                                $stmt->execute();
+                                if ($stmt->rowCount() > 0) {
+                                    foreach ($stmt as $row) {
+                                        echo '
+                                        <tr>
+                                        <td>' . $row['name'] . '</td>
+                                        <td>' . $row['birthday'] . '</td>
+                                        <td>' . $row['phone'] . '</td>
+                                        <td>' . $row['address'] . '</td>
+                                        <td>
+                                        <form action="?url=HomeController/AddStudent" method="post">
+                                        <td><button type="submit" class="btn btn-primary" name="submit">thêm</button></td>
+                                        </form>
+                                        </td>
+                                        </tr>';
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
