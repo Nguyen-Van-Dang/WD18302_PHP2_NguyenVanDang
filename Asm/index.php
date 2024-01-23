@@ -33,6 +33,23 @@ if (isset($_GET['pages'])) {
                         case 'Dashboard':
                             include './src/View/ViewAdmin/Resources/dashboard.php';
                             break;
+       //học sinh
+       case 'student':
+        include './src/View/ViewAdmin/Resources/student.php';
+        break;
+       //
+       case 'academicability':
+        include './src/View/ViewAdmin/Resources/academicability.php';
+        break;
+       //điểm số
+       case 'scores':
+        include './src/View/ViewAdmin/Resources/scores.php';
+        break;
+               //bảng điểm
+       case 'tablescores':
+        include './src/View/ViewAdmin/Resources/tablescores.php';
+        break;
+
 
                         default:
                             include './src/View/ViewAdmin/Resources/dashboard.php';
@@ -47,6 +64,22 @@ if (isset($_GET['pages'])) {
                 case 'Home':
                     include './src/View/ViewUser/Resources/home.php';
                     break;
+                                        //thông báo
+                case 'notification':
+                    include './src/View/ViewUser/Resources/notification.php';
+                    break;
+                    //bản điểm theo kỳ
+                    case 'semestetranscripts':
+                        include './src/View/ViewUser/Resources/semestetranscripts.php';
+                        break;
+                        //lịch sử học
+                    case 'learninghistory':
+                        include './src/View/ViewUser/Resources/learninghistory.php';
+                        break;
+                          //Bảng điểm
+                    case 'transcript':
+                        include './src/View/ViewUser/Resources/transcript.php';
+                        break;
 
                     //đăng xuất
                 case "Logout":
