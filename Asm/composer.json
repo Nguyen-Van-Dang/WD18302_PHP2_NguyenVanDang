@@ -1,5 +1,5 @@
 {
-    "name": "php/oop",
+    "name": "admin/asm",
     "autoload": {
         "psr-4": {
             "Src\\": "src/"
