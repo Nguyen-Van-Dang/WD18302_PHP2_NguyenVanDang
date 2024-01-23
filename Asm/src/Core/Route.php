@@ -7,7 +7,7 @@ class Route
     public $url;
     public $nameController = "HomeController";
     public $nameMethod = "home";
-    public $path = 'App/Controllers/';
+    public $path = 'Src/Controllers/';
     public $controller;
     function __construct()
     {

@@ -15,4 +15,8 @@ class RenderBase extends BaseController
         $this->load->render('Student');
     }
 
+    public function renderAddStudent(){
+        $this->load->render('AddStudent');
+    }
+
 }

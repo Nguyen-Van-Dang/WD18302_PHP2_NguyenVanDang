@@ -12,7 +12,7 @@
 <body>
     <div class="content">
         <main>
-            <a href="?url=">Hello</a>
+            <a href="?url=HomeController/AddStudent">Hello</a>
             <div class="header">
                 <!-- End of Insights -->
                 <div class="bottom-data">

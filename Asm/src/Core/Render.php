@@ -20,7 +20,7 @@ class Render
     public function render($file, $data = array())
     {
         extract($data);
-        require 'App/Views/' . $file . '.php';
+        require 'src/Views/' . $file . '.php';
         $viewPath = __DIR__ . '/../Views/' .  $file . '.php';
 
         // kiểm tra file view có tồn tại không
@@ -37,7 +37,7 @@ class Render
      */
     public function renderModel($file)
     {
-        require 'App/Models/' . $file . '.php';
+        require 'src/Models/' . $file . '.php';
         return new $file();
     }
 }
