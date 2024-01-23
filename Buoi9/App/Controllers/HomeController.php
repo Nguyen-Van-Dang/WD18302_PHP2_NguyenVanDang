@@ -36,8 +36,6 @@ class HomeController extends BaseController
                 ]
             ]
         ];
-
-
         // $this->_renderBase->renderHeader();
         // $this->load->render('layouts/client/slider');
         // $this->load->render('layouts/client/home_product', $data);
@@ -45,9 +43,9 @@ class HomeController extends BaseController
         $this->_renderBase->renderlogin();
     }
 
-    function detail($id)
+    function header($id)
     {        // dữ liệu ở đây lấy từ responsitories hoặc model
-      
+       $this->_renderBase->renderHeader();
     }
 
 }

@@ -11,9 +11,9 @@ class RenderBase extends BaseController
         parent::__construct();
     }
 
-    // public function renderHeader(){
-    //     $this->load->render('layouts/client/header');
-    // }
+    public function renderHeader(){
+        $this->load->render('layouts/client/header');
+    }
 
     // public function renderFooter(){
     //     $this->load->render('layouts/client/footer');

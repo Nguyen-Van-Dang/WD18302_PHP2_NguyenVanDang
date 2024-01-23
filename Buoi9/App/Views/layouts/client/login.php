@@ -1,6 +1,6 @@
 <?
 require_once "vendor/autoload.php";
-include(''); 
+include('../../../Public/link.php'); 
 use App\Model\Database;
 use App\Model\UserFunction;
 
@@ -26,7 +26,7 @@ if (isset($_POST["signin"])) {
               setcookie("role", '1', time() + 3600, "/");
               $user_id = $user->get_Info_User_account($user_account, 'user_account');
               setcookie("userID", $user_id, time() + 3600, "/");
-              header('location: index.php?pages=user&action=Home');
+              header('location: ?url=HomeContronller/login');
             } else {
               $result = $user->user_id($user_account, $user_password);
               $_SESSION['user_account'] = $user_account;
