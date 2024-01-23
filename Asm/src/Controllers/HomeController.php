@@ -37,16 +37,16 @@ class HomeController extends BaseController
             ]
         ];
 
-
-        $this->_renderBase->renderHeader();
-        $this->load->render('layouts/client/slider');
-        $this->load->render('layouts/client/home_product', $data);
-        $this->_renderBase->renderFooter();
+        // $this->_renderBase->renderHeader();
+        // $this->load->render('layouts/client/slider');
+        // $this->load->render('layouts/client/home_product', $data);
+        // $this->_renderBase->renderFooter();
+        $this->_renderBase->renderStudent();
     }
 
-    function detail($id)
+    function AddStudent()
     {        // dữ liệu ở đây lấy từ responsitories hoặc model
-      
+        // $this->_renderBase->renderStudent();
     }
 
 }
