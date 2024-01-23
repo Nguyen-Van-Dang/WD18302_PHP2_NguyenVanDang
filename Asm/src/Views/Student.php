@@ -1,48 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/your/styles.css">
-</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="path/to/your/styles.css">
 
 <body>
+    <form action="?url=HomeController/AddStudent" method="post">
+        <td><button type="submit" class="btn btn-primary" name="submit">thêm</button></td>
+    </form>
     <div class="content">
         <main>
-            <a href="?url=HomeController/AddStudent">Hello</a>
             <div class="header">
-                <!-- End of Insights -->
                 <div class="bottom-data">
                     <div class="orders">
-                        <form action="">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Birthday</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Image</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>14-08-2023</td>
-                                        <td>John Doe</td>
-                                        <td>14-08-2023</td>
-                                        <td>John Doe</td>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Birthday</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?
+                                $conn = $Data->pdo_get_connection();
+                                $stmt = $conn->prepare("SELECT * FROM `student`");
+                                $stmt->execute();
+                                if ($stmt->rowCount() > 0) {
+                                    foreach ($stmt as $row) {
+                                        echo '
+                                        <tr>
+                                        <td>' . $row['name'] . '</td>
+                                        <td>' . $row['birthday'] . '</td>
+                                        <td>' . $row['phone'] . '</td>
+                                        <td>' . $row['address'] . '</td>
+                                        <td>
+                                        <form action="?url=HomeController/AddStudent" method="post">
                                         <td><button type="submit" class="btn btn-primary" name="submit">thêm</button></td>
+                                        </form>
+                                        </td>
                                     </tr>
-                                    <!-- Add more rows as needed -->
-                                </tbody>
-                            </table>
-                        </form>
+                                   
+                                        ';
+                                    }
+                                }
+                                ?>
+                            </tbody>
+
+                        </table>
                     </div>
-                    <!-- Reminders -->
                 </div>
             </div>
         </main>

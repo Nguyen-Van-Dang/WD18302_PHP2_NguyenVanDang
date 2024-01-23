@@ -46,7 +46,7 @@ class HomeController extends BaseController
 
     function AddStudent()
     {        // dữ liệu ở đây lấy từ responsitories hoặc model
-        $this->_renderBase->renderStudent();
+        $this->_renderBase->renderAddStudent();
     }
 
 }
