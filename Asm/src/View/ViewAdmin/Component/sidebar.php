@@ -7,7 +7,7 @@
             <div class="logo-name"><span>Vô Gia</span> Cư</div>
         </a>
         <ul class="side-menu">
-            <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Trang Chủ</a></li>
+            <li class="active"><a href="index.php?pages=admin&action=Dashboard"><i class='bx bxs-dashboard'></i>Trang Chủ</a></li>
             <!-- <li><a href="#"><i class='fas fa-user-graduate' style="font-size: 25px; margin-left: 7px; min-width: calc(60px - ((4px + 6px) * 2));"></i>Giáo Viên</a></li> -->
             <li><a href="index.php?pages=admin&action=student"><i class='fas fa-user-friends' style="font-size: 25px; margin-left: 7px; min-width: calc(60px - ((4px + 6px) * 2));"></i>Học Sinh</a></li>
             <!-- <li><a href="#"><i class='bx bx-analyse'style="font-size: 25px; min-width: calc(65px - ((4px + 6px) * 2));"></i>Lớp</a></li> -->
