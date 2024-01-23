@@ -1,8 +1,8 @@
 <?
 require_once "vendor/autoload.php";
 
-use Src\Model\Database;
-use Src\Model\UserFunction;
+use App\Model\Database;
+use App\Model\UserFunction;
 
 $Data = new Database;
 $user = new UserFunction();
