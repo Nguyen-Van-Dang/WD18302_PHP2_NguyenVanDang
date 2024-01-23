@@ -38,10 +38,11 @@ class HomeController extends BaseController
         ];
 
 
-        $this->_renderBase->renderHeader();
-        $this->load->render('layouts/client/slider');
-        $this->load->render('layouts/client/home_product', $data);
-        $this->_renderBase->renderFooter();
+        // $this->_renderBase->renderHeader();
+        // $this->load->render('layouts/client/slider');
+        // $this->load->render('layouts/client/home_product', $data);
+        // $this->_renderBase->renderFooter();
+        $this->_renderBase->renderlogin();
     }
 
     function detail($id)

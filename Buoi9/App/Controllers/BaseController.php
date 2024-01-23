@@ -7,7 +7,7 @@ use App\Core\Render;
 
 class BaseController
 {
-    protected Render|array $load;
+    protected Render $load;
     function __construct()
     {
         $this->load = new Render();
