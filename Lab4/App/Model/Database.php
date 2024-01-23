@@ -8,7 +8,7 @@ class Database
 {
     function pdo_get_connection()
     {
-        $dburl = "mysql:host=localhost;dbname=php2;charset=utf8";
+        $dburl = "mysql:host=localhost;dbname=lab4;charset=utf8";
         $username = 'root';
         $password = 'mysql';
         $conn = new PDO($dburl, $username, $password);

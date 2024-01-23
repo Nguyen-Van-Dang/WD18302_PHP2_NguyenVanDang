@@ -58,12 +58,31 @@ class UserFunction
     }
 
     // đăng kí
-
     function user_create($user_name, $user_phone_number, $pass1)
     {
         $Data = new Database();
         $sql = "INSERT INTO user(user_name, user_phone_number, user_password, role_id, is_deleted ) VALUES ('$user_name', '$user_phone_number', '$pass1', 2, 2)";
         $result = $Data->pdo_execute($sql);
         return $result;
+    }
+////////////////////
+    public function check_User($Product, $Type_ID, $cate_ID)
+    {
+
+        $Data = new Database();
+        $sql = "SELECT * FROM products WHERE LOWER(product_name) = '$Product' AND type_id = $Type_ID AND category_id = $cate_ID";
+        $result = $Data->pdo_execute($sql);
+        return $result;
+    }
+
+    function Add_User($product_name, $product_price, $product_sale, $product_img, $product_quantily, $category_id, $type_id, $product_short_description, $product_description, $user_created)
+    {
+
+        $Data = new Database();
+        $sql = "INSERT INTO 
+        products(product_name,product_img, product_price, product_sale,product_quantily, category_id, type_id ,product_short_description ,product_description, user_created, is_deleted )
+        VALUES
+        ('$product_name','$product_img' , $product_price, $product_sale, $product_quantily, $category_id , $type_id,'$product_short_description' ,'$product_description', $user_created,1  )";
+        $result = $Data->pdo_execute($sql);
     }
 }
