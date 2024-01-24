@@ -1,11 +1,11 @@
 <?
 session_start();
 require_once "vendor/autoload.php";
-use Src\Model\Database;
-use Src\Model\UserFunction;
+use Src\Models\Database;
+use Src\Models\UserFunction;
 
 $Data = new Database;
-$user = new UserFunction();
+// $user = new UserFunction();
 if (!isset($_COOKIE['userID'])) {
     header("location: login.php");
 }
